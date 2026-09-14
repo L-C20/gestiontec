@@ -3,11 +3,13 @@ node_modules/
 npm-debug.log
 package-lock.json
 yarn.lock
+.npmrc
 
 # Environment
 .env
 .env.local
 .env.*.local
+.env.production.local
 
 # IDE
 .vscode/
