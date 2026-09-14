@@ -37,16 +37,16 @@
 
     <!-- Título y favicon -->
     <title>GESTIONTEC — Sistemas de Administración para Tu Negocio</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
     <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <!-- ==================== HEADER ==================== -->
@@ -57,19 +57,16 @@
             </div>
 
             <nav class="header__nav" id="headerNav">
-                <a href="#inicio" class="header__nav-link">Inicio</a>
-                <a href="#que-es" class="header__nav-link">Qué es</a>
                 <a href="#soluciones" class="header__nav-link">Soluciones</a>
-                <a href="#beneficios" class="header__nav-link">Beneficios</a>
-                <a href="#como-funciona" class="header__nav-link">Cómo funciona</a>
                 <a href="#planes" class="header__nav-link">Planes</a>
                 <a href="#faq" class="header__nav-link">FAQ</a>
                 <a href="#contacto" class="header__nav-link">Contacto</a>
+                <a href="#contacto" class="header__nav-cta">Solicitar información</a>
             </nav>
 
             <button class="header__cta" id="headerCTA">Solicitar información</button>
 
-            <button class="header__menu-toggle" id="menuToggle" aria-label="Menú">
+            <button class="header__menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -83,20 +80,70 @@
         <section class="hero" id="inicio">
             <div class="hero__container">
                 <div class="hero__content">
-                    <h1 class="hero__title">GESTIONTEC</h1>
-                    <p class="hero__subtitle">Sistemas de administración pensados para tu negocio</p>
+                    <span class="hero__eyebrow">Software de gestión empresarial</span>
+                    <h1 class="hero__title">Sistemas de administración <span>pensados para tu negocio</span></h1>
+                    <p class="hero__subtitle">GESTIONTEC desarrolla software profesional adaptado a cada rubro.</p>
                     <p class="hero__description">
                         Soluciones tecnológicas especializadas que te permiten organizar,
-                        controlar y optimizar la gestión de tu empresa.
+                        controlar y optimizar la gestión de tu empresa desde un único lugar.
                     </p>
                     <div class="hero__ctas">
                         <a href="#soluciones" class="hero__cta hero__cta--primary">Conocer soluciones</a>
                         <a href="#planes" class="hero__cta hero__cta--secondary">Consultar planes</a>
                     </div>
+                    <div class="hero__trust" id="heroStats">
+                        <!-- Renderizado dinámicamente desde config.js -->
+                    </div>
                 </div>
                 <div class="hero__visual">
-                    <!-- Placeholder para elemento visual -->
-                    <div class="hero__visual-placeholder"></div>
+                    <div class="dashboard-mock" aria-hidden="true">
+                        <div class="dashboard-mock__bar">
+                            <span class="dashboard-mock__dot"></span>
+                            <span class="dashboard-mock__dot"></span>
+                            <span class="dashboard-mock__dot"></span>
+                            <span class="dashboard-mock__title">panel.gestiontec</span>
+                        </div>
+                        <div class="dashboard-mock__stats">
+                            <div class="dashboard-mock__stat">
+                                <span class="dashboard-mock__stat-value">128</span>
+                                <span class="dashboard-mock__stat-label">Clientes</span>
+                            </div>
+                            <div class="dashboard-mock__stat">
+                                <span class="dashboard-mock__stat-value">+18%</span>
+                                <span class="dashboard-mock__stat-label">Crecimiento</span>
+                            </div>
+                            <div class="dashboard-mock__stat">
+                                <span class="dashboard-mock__stat-value">24/7</span>
+                                <span class="dashboard-mock__stat-label">Disponibilidad</span>
+                            </div>
+                        </div>
+                        <div class="dashboard-mock__list">
+                            <div class="dashboard-mock__item">
+                                <span class="dashboard-mock__avatar">CD</span>
+                                <div class="dashboard-mock__item-info">
+                                    <span class="dashboard-mock__item-name">Consultorio Dental Ruiz</span>
+                                    <span class="dashboard-mock__item-meta">Turno hoy · 10:30</span>
+                                </div>
+                                <span class="dashboard-mock__badge dashboard-mock__badge--ok">Al día</span>
+                            </div>
+                            <div class="dashboard-mock__item">
+                                <span class="dashboard-mock__avatar">KC</span>
+                                <div class="dashboard-mock__item-info">
+                                    <span class="dashboard-mock__item-name">Kiosco Central</span>
+                                    <span class="dashboard-mock__item-meta">Stock bajo · 3 productos</span>
+                                </div>
+                                <span class="dashboard-mock__badge dashboard-mock__badge--warn">Pendiente</span>
+                            </div>
+                            <div class="dashboard-mock__item">
+                                <span class="dashboard-mock__avatar">EL</span>
+                                <div class="dashboard-mock__item-info">
+                                    <span class="dashboard-mock__item-name">Estudio López &amp; Asoc.</span>
+                                    <span class="dashboard-mock__item-meta">Factura #2847</span>
+                                </div>
+                                <span class="dashboard-mock__badge dashboard-mock__badge--ok">Al día</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -104,14 +151,19 @@
         <!-- SECTION 2: ¿QUÉ ES GESTIONTEC? -->
         <section class="what-is" id="que-es">
             <div class="what-is__container">
-                <h2 class="what-is__title">¿Qué es GESTIONTEC?</h2>
-                <p class="what-is__description">
-                    GESTIONTEC desarrolla sistemas de administración adaptados a distintos rubos de negocio.
-                    Nuestro objetivo es que puedas organizar, centralizar y controlar toda la información
-                    de tu empresa desde un único lugar.
-                </p>
-                <div class="what-is__features" id="whatIsFeatures">
-                    <!-- Renderizado dinámicamente -->
+                <div class="section__head">
+                    <span class="eyebrow">Qué es GESTIONTEC</span>
+                    <h2 class="section__title">Una marca, sistemas especializados por rubro</h2>
+                </div>
+                <div class="what-is__lead">
+                    <p class="what-is__description">
+                        GESTIONTEC desarrolla sistemas de administración adaptados a distintos rubros de negocio.
+                        Nuestro objetivo es que puedas organizar, centralizar y controlar toda la información
+                        de tu empresa desde un único lugar, con software pensado específicamente para tu sector.
+                    </p>
+                    <div class="what-is__features" id="whatIsFeatures">
+                        <!-- Renderizado dinámicamente -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -119,11 +171,14 @@
         <!-- SECTION 3: SOLUCIONES -->
         <section class="solutions" id="soluciones">
             <div class="solutions__container">
-                <h2 class="solutions__title">Nuestras Soluciones</h2>
-                <p class="solutions__description">
-                    Contamos con sistemas especializados para diferentes rubros.
-                    Cada solución está diseñada considerando las necesidades específicas de tu negocio.
-                </p>
+                <div class="section__head section__head--center">
+                    <span class="eyebrow">Soluciones</span>
+                    <h2 class="section__title">Nuestras soluciones</h2>
+                    <p class="section__description">
+                        Sistemas especializados para diferentes rubros, diseñados considerando
+                        las necesidades específicas de cada negocio.
+                    </p>
+                </div>
                 <div class="solutions__grid" id="solutionsGrid">
                     <!-- Renderizado dinámicamente desde data.js -->
                 </div>
@@ -133,7 +188,10 @@
         <!-- SECTION 4: BENEFICIOS -->
         <section class="benefits" id="beneficios">
             <div class="benefits__container">
-                <h2 class="benefits__title">Beneficios de GESTIONTEC</h2>
+                <div class="section__head section__head--center">
+                    <span class="eyebrow">Beneficios</span>
+                    <h2 class="section__title">Beneficios de GESTIONTEC</h2>
+                </div>
                 <div class="benefits__grid" id="benefitsGrid">
                     <!-- Renderizado dinámicamente -->
                 </div>
@@ -143,10 +201,11 @@
         <!-- SECTION 5: CÓMO FUNCIONA -->
         <section class="how-it-works" id="como-funciona">
             <div class="how-it-works__container">
-                <h2 class="how-it-works__title">Cómo Funciona</h2>
-                <p class="how-it-works__description">
-                    Cuatro pasos simples para comenzar a usar GESTIONTEC
-                </p>
+                <div class="section__head section__head--center">
+                    <span class="eyebrow">Proceso</span>
+                    <h2 class="section__title">Cómo funciona</h2>
+                    <p class="section__description">Cuatro pasos simples para comenzar a usar GESTIONTEC.</p>
+                </div>
                 <div class="how-it-works__steps" id="stepsContainer">
                     <!-- Renderizado dinámicamente -->
                 </div>
@@ -156,26 +215,26 @@
         <!-- SECTION 6: PLANES -->
         <section class="pricing" id="planes">
             <div class="pricing__container">
-                <h2 class="pricing__title">Planes y Precios</h2>
-                <p class="pricing__description">
-                    Elige el plan que mejor se adapte a las necesidades de tu negocio
-                </p>
+                <div class="section__head section__head--center">
+                    <span class="eyebrow">Planes</span>
+                    <h2 class="section__title">Planes y precios</h2>
+                    <p class="section__description">Elegí el plan que mejor se adapte a las necesidades de tu negocio.</p>
+                </div>
                 <div class="pricing__grid" id="plansGrid">
                     <!-- Renderizado dinámicamente desde data.js -->
                 </div>
-                <p class="pricing__disclaimer">
-                    * Planes y precios sujetos a modificaciones
-                </p>
+                <p class="pricing__disclaimer">* Planes y precios sujetos a modificaciones</p>
             </div>
         </section>
 
         <!-- SECTION 7: SEGURIDAD Y CONFIANZA -->
         <section class="security" id="seguridad">
             <div class="security__container">
-                <h2 class="security__title">Seguridad y Confianza</h2>
-                <p class="security__description">
-                    Desarrollamos con buenas prácticas de seguridad y protección de datos
-                </p>
+                <div class="section__head section__head--center">
+                    <span class="eyebrow">Seguridad</span>
+                    <h2 class="section__title">Seguridad y confianza</h2>
+                    <p class="section__description">Desarrollamos con buenas prácticas de seguridad y protección de datos.</p>
+                </div>
                 <div class="security__points" id="securityPoints">
                     <!-- Renderizado dinámicamente -->
                 </div>
@@ -185,12 +244,15 @@
         <!-- SECTION 8: PENSADO PARA CRECER -->
         <section class="growth" id="crecer">
             <div class="growth__container">
-                <h2 class="growth__title">Pensado para Crecer</h2>
-                <h3 class="growth__subtitle">Tu negocio cambia. Tu sistema también.</h3>
-                <p class="growth__description">
-                    A medida que tu empresa crece y evoluciona, GESTIONTEC se adapta a tus nuevas necesidades.
-                    Puedes cambiar de plan, agregar módulos o personalizar tu solución sin interrupciones.
-                </p>
+                <div class="growth__head">
+                    <span class="eyebrow">Escalabilidad</span>
+                    <h2 class="section__title">Pensado para crecer</h2>
+                    <p class="growth__subtitle">Tu negocio cambia. Tu sistema también.</p>
+                    <p class="section__description">
+                        A medida que tu empresa crece y evoluciona, GESTIONTEC se adapta a tus nuevas necesidades.
+                        Podés cambiar de plan, agregar módulos o personalizar tu solución sin interrupciones.
+                    </p>
+                </div>
                 <div class="growth__points" id="growthPoints">
                     <!-- Renderizado dinámicamente -->
                 </div>
@@ -200,7 +262,10 @@
         <!-- SECTION 9: PREGUNTAS FRECUENTES -->
         <section class="faq" id="faq">
             <div class="faq__container">
-                <h2 class="faq__title">Preguntas Frecuentes</h2>
+                <div class="section__head section__head--center">
+                    <span class="eyebrow">Preguntas frecuentes</span>
+                    <h2 class="section__title">¿Tenés dudas?</h2>
+                </div>
                 <div class="faq__list" id="faqList">
                     <!-- Renderizado dinámicamente desde data.js -->
                 </div>
@@ -210,50 +275,29 @@
         <!-- SECTION 10: CONTACTO -->
         <section class="contact" id="contacto">
             <div class="contact__container">
-                <h2 class="contact__title">Contacto</h2>
-                <p class="contact__description">
-                    ¿Quieres conocer más sobre GESTIONTEC? Completa el formulario
-                    y nos pondremos en contacto contigo lo antes posible.
-                </p>
+                <div class="section__head contact__head section__head--center">
+                    <span class="eyebrow">Contacto</span>
+                    <h2 class="section__title">Hablemos de tu negocio</h2>
+                    <p class="section__description">
+                        Completá el formulario y nos pondremos en contacto contigo lo antes posible.
+                    </p>
+                </div>
 
                 <form class="contact__form" id="contactForm" method="POST" action="#">
                     <div class="form__group">
-                        <label for="formName">
-                            Nombre completo
-                            <span class="form__required">*</span>
-                        </label>
-                        <input
-                            type="text"
-                            id="formName"
-                            name="name"
-                            placeholder="Tu nombre completo"
-                            required
-                            minlength="3"
-                        >
+                        <label for="formName">Nombre completo <span class="form__required">*</span></label>
+                        <input type="text" id="formName" name="name" placeholder="Tu nombre completo" required minlength="3">
                         <span class="form__error" id="nameError"></span>
                     </div>
 
                     <div class="form__group">
-                        <label for="formBusiness">
-                            Nombre del negocio
-                            <span class="form__required">*</span>
-                        </label>
-                        <input
-                            type="text"
-                            id="formBusiness"
-                            name="business"
-                            placeholder="Ej: Mi Consultorio Dental"
-                            required
-                            minlength="3"
-                        >
+                        <label for="formBusiness">Nombre del negocio <span class="form__required">*</span></label>
+                        <input type="text" id="formBusiness" name="business" placeholder="Ej: Mi Consultorio Dental" required minlength="3">
                         <span class="form__error" id="businessError"></span>
                     </div>
 
                     <div class="form__group">
-                        <label for="formCategory">
-                            Rubro/Industria
-                            <span class="form__required">*</span>
-                        </label>
+                        <label for="formCategory">Rubro/Industria <span class="form__required">*</span></label>
                         <select id="formCategory" name="category" required>
                             <option value="">-- Seleccionar rubro --</option>
                             <option value="consultorios">Consultorios / Salud</option>
@@ -265,65 +309,35 @@
                         <span class="form__error" id="categoryError"></span>
                     </div>
 
-                    <div class="form__group form__group--half">
-                        <label for="formEmail">
-                            Email
-                            <span class="form__required">*</span>
-                        </label>
-                        <input
-                            type="email"
-                            id="formEmail"
-                            name="email"
-                            placeholder="tu@email.com"
-                            required
-                        >
-                        <span class="form__error" id="emailError"></span>
-                    </div>
+                    <div class="form__row">
+                        <div class="form__group form__group--half">
+                            <label for="formEmail">Email <span class="form__required">*</span></label>
+                            <input type="email" id="formEmail" name="email" placeholder="tu@email.com" required>
+                            <span class="form__error" id="emailError"></span>
+                        </div>
 
-                    <div class="form__group form__group--half">
-                        <label for="formPhone">
-                            Teléfono/WhatsApp
-                        </label>
-                        <input
-                            type="tel"
-                            id="formPhone"
-                            name="phone"
-                            placeholder="+54 9 XX XXXX-XXXX"
-                        >
-                        <span class="form__error" id="phoneError"></span>
+                        <div class="form__group form__group--half">
+                            <label for="formPhone">Teléfono/WhatsApp</label>
+                            <input type="tel" id="formPhone" name="phone" placeholder="+54 9 XX XXXX-XXXX">
+                            <span class="form__error" id="phoneError"></span>
+                        </div>
                     </div>
 
                     <div class="form__group">
-                        <label for="formMessage">
-                            Mensaje / Consulta
-                            <span class="form__required">*</span>
-                        </label>
-                        <textarea
-                            id="formMessage"
-                            name="message"
-                            placeholder="Cuéntanos qué necesitas y cómo podemos ayudarte..."
-                            required
-                            minlength="10"
-                            rows="5"
-                        ></textarea>
+                        <label for="formMessage">Mensaje / Consulta <span class="form__required">*</span></label>
+                        <textarea id="formMessage" name="message" placeholder="Cuéntanos qué necesitas y cómo podemos ayudarte..." required minlength="10" rows="5"></textarea>
                         <span class="form__char-count" id="charCount">0/500</span>
                         <span class="form__error" id="messageError"></span>
                     </div>
 
                     <div class="form__notice">
-                        <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin: 0;">
-                            <strong>*</strong> Campos obligatorios. Nos pondremos en contacto dentro de 24 horas hábiles.
-                        </p>
+                        <strong>*</strong> Campos obligatorios. Nos pondremos en contacto dentro de 24 horas hábiles.
                     </div>
 
-                    <button type="submit" class="form__submit" id="submitBtn">
-                        Enviar Mensaje
-                    </button>
+                    <button type="submit" class="form__submit" id="submitBtn">Enviar Mensaje</button>
 
                     <div class="form__success" id="successMessage" style="display: none;">
-                        <p style="color: var(--color-success); margin: 0;">
-                            ✓ ¡Gracias! Tu mensaje ha sido recibido. Nos pondremos en contacto pronto.
-                        </p>
+                        <p style="color: var(--color-success);">✓ ¡Gracias! Tu mensaje ha sido recibido. Nos pondremos en contacto pronto.</p>
                     </div>
                 </form>
             </div>
@@ -336,17 +350,23 @@
             <div class="footer__content">
                 <div class="footer__brand">
                     <h3>GESTIONTEC</h3>
-                    <p>Sistemas de administración para negocios</p>
+                    <p>Sistemas de administración especializados, pensados para que tu negocio crezca sin fricciones.</p>
                 </div>
 
                 <div class="footer__links">
-                    <h4>Enlaces</h4>
+                    <h4>Navegación</h4>
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
                         <li><a href="#que-es">Qué es</a></li>
                         <li><a href="#soluciones">Soluciones</a></li>
                         <li><a href="#planes">Planes</a></li>
-                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__links">
+                    <h4>Soporte</h4>
+                    <ul>
+                        <li><a href="#faq">Preguntas frecuentes</a></li>
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>
                 </div>
@@ -397,448 +417,8 @@
     </script>
 
     <!-- Scripts -->
-    <script>
-        // Configuración
-        const CONFIG = {
-            benefits: [
-                { title: "Más organización", description: "Centraliza toda tu información en un único lugar" },
-                { title: "Menos tareas manuales", description: "Automatiza procesos repetitivos y ahorra tiempo" },
-                { title: "Información centralizada", description: "Accede a todos tus datos desde cualquier dispositivo" },
-                { title: "Mayor control", description: "Visualiza el estado de tu negocio en tiempo real" },
-                { title: "Acceso rápido", description: "Reportes y dashboards listos en segundos" },
-                { title: "Adaptación a tu negocio", description: "Personalización según tus necesidades específicas" },
-                { title: "Evolución constante", description: "Nuevas características y mejoras regularmente" },
-                { title: "Soporte profesional", description: "Equipo dedicado disponible para ayudarte" }
-            ],
-            steps: [
-                { number: 1, title: "Elegís una solución", description: "Selecciona el sistema que se adapte a tu negocio" },
-                { number: 2, title: "Configuramos el sistema", description: "Personalizamos la solución según tus necesidades" },
-                { number: 3, title: "Comenzás a utilizarlo", description: "Acceso inmediato a tu panel de administración" },
-                { number: 4, title: "Recibís soporte", description: "Apoyo continuo y evolución de tu sistema" }
-            ],
-            security: [
-                { title: "Desarrollo seguro", description: "Seguimos buenas prácticas de seguridad en el desarrollo" },
-                { title: "Protección de acceso", description: "Autenticación y control de permisos robustos" },
-                { title: "Actualizaciones", description: "Parches de seguridad y mejoras regularmente" }
-            ],
-            growthPoints: [
-                { title: "Escalabilidad", description: "Crece sin limitaciones técnicas" },
-                { title: "Flexibilidad", description: "Cambia de plan o agrega módulos cuando lo necesites" },
-                { title: "Integración", description: "Conecta con otras herramientas que ya utilizas" }
-            ]
-        };
-
-        // Datos
-        const DATA = {
-            solutions: [
-                {
-                    id: "quirogestion",
-                    name: "QuiroGest",
-                    rubric: "Consultorios",
-                    description: "Sistema especializado para la gestión integral de consultorios odontológicos y de salud",
-                    features: ["Gestión de turnos", "Historiales de pacientes", "Facturación y cobros", "Control de inventario", "Reportes y estadísticas"],
-                    status: "Disponible",
-                    cta: "Conocer más"
-                },
-                {
-                    id: "solution-2",
-                    name: "ComercioSystem",
-                    rubric: "Comercios",
-                    description: "Solución integral para tiendas y comercios minoristas",
-                    features: ["Punto de venta", "Gestión de inventario", "Control de ventas", "Registros de clientes", "Análisis de ventas"],
-                    status: "En desarrollo",
-                    cta: "Notificarme"
-                },
-                {
-                    id: "solution-3",
-                    name: "ProGest",
-                    rubric: "Profesionales",
-                    description: "Sistema para profesionales independientes que necesitan organizar su trabajo",
-                    features: ["Agenda profesional", "Gestión de clientes", "Cotizaciones", "Facturación", "Seguimiento de proyectos"],
-                    status: "En desarrollo",
-                    cta: "Notificarme"
-                }
-            ],
-            plans: [
-                {
-                    id: "inicial",
-                    name: "Inicial",
-                    price: 9900,
-                    currency: "ARS",
-                    period: "mes",
-                    description: "Para emprendimientos y negocios pequeños",
-                    highlight: false,
-                    features: [
-                        { text: "1 usuario", included: true },
-                        { text: "Módulo base completo", included: true },
-                        { text: "Soporte por email", included: true },
-                        { text: "Actualizaciones incluidas", included: true },
-                        { text: "Múltiples usuarios", included: false },
-                        { text: "Reportes avanzados", included: false },
-                        { text: "Integraciones", included: false },
-                        { text: "API access", included: false }
-                    ],
-                    cta: "Solicitar información"
-                },
-                {
-                    id: "profesional",
-                    name: "Profesional",
-                    price: 24900,
-                    currency: "ARS",
-                    period: "mes",
-                    description: "Para pequeñas empresas en crecimiento",
-                    highlight: true,
-                    features: [
-                        { text: "Hasta 5 usuarios", included: true },
-                        { text: "Todos los módulos", included: true },
-                        { text: "Reportes y análisis", included: true },
-                        { text: "Integraciones básicas", included: true },
-                        { text: "Soporte prioritario", included: true },
-                        { text: "Actualizaciones incluidas", included: true },
-                        { text: "Hasta 20 usuarios", included: false },
-                        { text: "API access", included: false }
-                    ],
-                    cta: "Solicitar información"
-                },
-                {
-                    id: "empresa",
-                    name: "Empresa",
-                    price: 39900,
-                    currency: "ARS",
-                    period: "mes",
-                    description: "Para medianas empresas",
-                    highlight: false,
-                    features: [
-                        { text: "Hasta 20 usuarios", included: true },
-                        { text: "Todos los módulos", included: true },
-                        { text: "Reportes avanzados", included: true },
-                        { text: "Integraciones personalizadas", included: true },
-                        { text: "API access", included: true },
-                        { text: "SLA 99.9%", included: true },
-                        { text: "Soporte 24/7", included: true },
-                        { text: "Consultoría incluida", included: true }
-                    ],
-                    cta: "Solicitar información"
-                }
-            ],
-            faq: [
-                { question: "¿Qué es GESTIONTEC?", answer: "GESTIONTEC es una plataforma de sistemas de administración especializados para distintos tipos de negocios. Ofrecemos soluciones que centralizan información, automatizan procesos y facilitan la gestión empresarial." },
-                { question: "¿Qué incluye la suscripción?", answer: "Cada plan incluye acceso al sistema, actualizaciones, soporte técnico y posibilidad de personalización según el plan elegido. Consulta los detalles de cada plan para conocer exactamente qué se incluye." },
-                { question: "¿Puedo cambiar de plan?", answer: "Sí, puedes cambiar de plan en cualquier momento. Los cambios se ajustan proporcionalmente en tu próxima facturación." },
-                { question: "¿El sistema se adapta a mi rubro?", answer: "Contamos con soluciones especializadas para distintos rubros. Si tu sector no está cubierto, podemos personalizar una solución. Contactanos para más detalles." },
-                { question: "¿Necesito instalar algo?", answer: "No. GESTIONTEC es una solución en la nube (cloud). Solo necesitas acceso a internet y un navegador web. Funciona desde cualquier dispositivo." },
-                { question: "¿Puedo usarlo desde distintos dispositivos?", answer: "Sí. Como es una solución web, puedes acceder desde computadoras, notebooks, tablets y smartphones. Tu información siempre está sincronizada." },
-                { question: "¿Cómo funciona el soporte?", answer: "El soporte varía según el plan. Los planes Inicial incluyen soporte por email, Profesional incluye soporte prioritario, y Empresa incluye soporte 24/7 con consultoría." },
-                { question: "¿Los precios pueden cambiar?", answer: "Los precios pueden estar sujetos a cambios. Sin embargo, respetamos los precios vigentes para suscripciones activas. Te notificaremos con anticipación sobre cualquier cambio." }
-            ]
-        };
-
-        // Renderizado dinámico
-        document.addEventListener('DOMContentLoaded', () => {
-            renderSolutions();
-            renderPlans();
-            renderFAQ();
-            renderBenefits();
-            renderSteps();
-            renderSecurity();
-            renderGrowthPoints();
-            setupMenuToggle();
-            setCurrentYear();
-            setupFormValidation();
-            setupSmoothScroll();
-        });
-
-        function renderSolutions() {
-            const grid = document.getElementById('solutionsGrid');
-            if (!grid) return;
-            grid.innerHTML = `<div class="grid grid--3col">` + DATA.solutions.map(s => `
-                <div class="card">
-                    <h3 class="card__title">${s.name}</h3>
-                    <p class="card__subtitle">${s.rubric}</p>
-                    <p class="card__description">${s.description}</p>
-                    <ul class="card__list">${s.features.map(f => `<li class="card__list-item">${f}</li>`).join('')}</ul>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <span style="font-size: 0.875rem; color: var(--color-text-secondary);">${s.status}</span>
-                        <button class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">${s.cta}</button>
-                    </div>
-                </div>
-            `).join('') + `</div>`;
-        }
-
-        function renderPlans() {
-            const grid = document.getElementById('plansGrid');
-            if (!grid) return;
-            grid.innerHTML = `<div class="grid grid--3col">` + DATA.plans.map(p => `
-                <div class="card ${p.highlight ? 'card--highlight' : ''}">
-                    <h3 class="card__title">${p.name}</h3>
-                    <p class="card__description" style="font-size: 0.875rem; margin-bottom: 1.5rem;">${p.description}</p>
-                    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-border);">
-                        <div style="font-size: 2rem; font-weight: 700; color: var(--color-primary);">$${p.price.toLocaleString('es-AR')}</div>
-                        <div style="font-size: 0.875rem; color: var(--color-text-secondary);">${p.currency} / ${p.period}</div>
-                    </div>
-                    <ul class="card__list" style="margin-bottom: 1.5rem;">
-                        ${p.features.map(f => `<li class="card__list-item" style="opacity: ${f.included ? '1' : '0.5'}">${f.text}</li>`).join('')}
-                    </ul>
-                    <button class="btn-primary" style="width: 100%;">${p.cta}</button>
-                </div>
-            `).join('') + `</div>`;
-        }
-
-        function renderBenefits() {
-            const grid = document.getElementById('benefitsGrid');
-            if (!grid) return;
-            grid.innerHTML = `<div class="grid grid--4col">` + CONFIG.benefits.map(b => `
-                <div style="padding: 1.5rem; background: var(--color-bg-light); border-radius: 0.75rem; border: 1px solid var(--color-border); transition: all 0.3s ease; cursor: default;">
-                    <h4 style="margin-bottom: 0.5rem; color: var(--color-primary); font-size: 1.125rem;">${b.title}</h4>
-                    <p style="color: var(--color-text-secondary); font-size: 0.875rem; line-height: 1.5;">${b.description}</p>
-                </div>
-            `).join('') + `</div>`;
-        }
-
-        function renderSteps() {
-            const container = document.getElementById('stepsContainer');
-            if (!container) return;
-            container.innerHTML = `<div class="grid grid--4col">` + CONFIG.steps.map(s => `
-                <div style="text-align: center;">
-                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin: 0 auto 1rem;">${s.number}</div>
-                    <h4 style="margin-bottom: 0.5rem; color: var(--color-text-primary);">${s.title}</h4>
-                    <p style="color: var(--color-text-secondary); font-size: 0.875rem; line-height: 1.5;">${s.description}</p>
-                </div>
-            `).join('') + `</div>`;
-        }
-
-        function renderSecurity() {
-            const points = document.getElementById('securityPoints');
-            if (!points) return;
-            points.innerHTML = `<div class="grid grid--3col">` + CONFIG.security.map(s => `
-                <div style="padding: 2rem; background: var(--color-bg-light); border-radius: 0.75rem; border: 1px solid var(--color-border);">
-                    <h4 style="margin-bottom: 0.5rem; color: var(--color-primary);">✓ ${s.title}</h4>
-                    <p style="color: var(--color-text-secondary); font-size: 0.875rem; line-height: 1.6;">${s.description}</p>
-                </div>
-            `).join('') + `</div>`;
-        }
-
-        function renderGrowthPoints() {
-            const points = document.getElementById('growthPoints');
-            if (!points) return;
-            points.innerHTML = `<div class="grid grid--3col">` + CONFIG.growthPoints.map(p => `
-                <div style="padding: 1.5rem; background: var(--color-bg-light); border-radius: 0.75rem; border-left: 4px solid var(--color-primary);">
-                    <h5 style="margin-bottom: 0.5rem; color: var(--color-primary);">${p.title}</h5>
-                    <p style="color: var(--color-text-secondary); font-size: 0.875rem; line-height: 1.6;">${p.description}</p>
-                </div>
-            `).join('') + `</div>`;
-        }
-
-        function renderFAQ() {
-            const list = document.getElementById('faqList');
-            if (!list) return;
-            list.innerHTML = DATA.faq.map((item, i) => `
-                <div class="faq-item" style="margin-bottom: 1rem; border: 1px solid var(--color-border); border-radius: 0.75rem; overflow: hidden;">
-                    <button class="faq-question" data-index="${i}" style="width: 100%; padding: 1.5rem; text-align: left; background: var(--color-bg-light); border: none; cursor: pointer; font-size: 1rem; font-weight: 600; color: var(--color-text-primary); display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
-                        <span>${item.question}</span>
-                        <span class="faq-toggle" style="font-size: 1.25rem; transition: transform 0.3s ease;">+</span>
-                    </button>
-                    <div class="faq-answer" data-index="${i}" style="max-height: 0; overflow: hidden; background: var(--color-bg-alt); transition: max-height 0.3s ease;">
-                        <p style="padding: 1.5rem; color: var(--color-text-secondary); margin: 0;">${item.answer}</p>
-                    </div>
-                </div>
-            `).join('');
-            setupAccordion();
-        }
-
-        function setupAccordion() {
-            document.querySelectorAll('.faq-question').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const idx = this.getAttribute('data-index');
-                    const answer = document.querySelector(`.faq-answer[data-index="${idx}"]`);
-                    const toggle = this.querySelector('.faq-toggle');
-
-                    document.querySelectorAll('.faq-answer').forEach(a => {
-                        if (a.getAttribute('data-index') !== idx) a.style.maxHeight = '0';
-                    });
-                    document.querySelectorAll('.faq-toggle').forEach(t => {
-                        if (t !== toggle) t.style.transform = 'rotate(0deg)';
-                    });
-
-                    const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
-                    answer.style.maxHeight = isOpen ? '0' : answer.scrollHeight + 'px';
-                    toggle.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(45deg)';
-                });
-            });
-        }
-
-        function setupMenuToggle() {
-            const toggle = document.getElementById('menuToggle');
-            const nav = document.querySelector('.header__nav');
-            const cta = document.querySelector('.header__cta');
-            if (!toggle) return;
-
-            toggle.addEventListener('click', function() {
-                const isOpen = nav.style.display === 'flex';
-                nav.style.display = isOpen ? 'none' : 'flex';
-                cta.style.display = isOpen ? 'none' : 'block';
-                this.classList.toggle('active');
-            });
-
-            document.querySelectorAll('.header__nav-link').forEach(link => {
-                link.addEventListener('click', function() {
-                    nav.style.display = 'none';
-                    cta.style.display = 'none';
-                    toggle.classList.remove('active');
-                });
-            });
-        }
-
-        function setCurrentYear() {
-            const year = document.getElementById('currentYear');
-            if (year) year.textContent = new Date().getFullYear();
-        }
-
-        function setupFormValidation() {
-            const form = document.getElementById('contactForm');
-            if (!form) return;
-
-            const formFields = {
-                name: document.getElementById('formName'),
-                business: document.getElementById('formBusiness'),
-                category: document.getElementById('formCategory'),
-                email: document.getElementById('formEmail'),
-                phone: document.getElementById('formPhone'),
-                message: document.getElementById('formMessage')
-            };
-
-            formFields.name.addEventListener('blur', () => validateField('name', formFields.name.value));
-            formFields.business.addEventListener('blur', () => validateField('business', formFields.business.value));
-            formFields.category.addEventListener('change', () => validateField('category', formFields.category.value));
-            formFields.email.addEventListener('blur', () => validateField('email', formFields.email.value));
-            formFields.phone.addEventListener('blur', () => validateField('phone', formFields.phone.value));
-            formFields.message.addEventListener('blur', () => validateField('message', formFields.message.value));
-
-            formFields.message.addEventListener('input', function() {
-                const count = this.value.length;
-                document.getElementById('charCount').textContent = count + '/500';
-                if (count > 500) this.value = this.value.substring(0, 500);
-            });
-
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                let isValid = true;
-                Object.keys(formFields).forEach(field => {
-                    if (!validateField(field, formFields[field].value)) {
-                        isValid = false;
-                    }
-                });
-
-                if (!isValid) {
-                    alert('Por favor, revisa los errores en el formulario');
-                    return;
-                }
-
-                const submitBtn = document.getElementById('submitBtn');
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Enviando...';
-
-                setTimeout(() => {
-                    const successMsg = document.getElementById('successMessage');
-                    successMsg.style.display = 'block';
-                    form.style.display = 'none';
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Enviar Mensaje';
-                }, 1500);
-            });
-
-            function validateField(field, value) {
-                const errorElement = document.getElementById(field + 'Error');
-                const inputElement = formFields[field];
-                let isValid = true;
-                let errorMsg = '';
-
-                switch(field) {
-                    case 'name':
-                        if (!value.trim()) {
-                            errorMsg = 'El nombre es requerido';
-                            isValid = false;
-                        } else if (value.trim().length < 3) {
-                            errorMsg = 'El nombre debe tener al menos 3 caracteres';
-                            isValid = false;
-                        }
-                        break;
-
-                    case 'business':
-                        if (!value.trim()) {
-                            errorMsg = 'El nombre del negocio es requerido';
-                            isValid = false;
-                        } else if (value.trim().length < 3) {
-                            errorMsg = 'El nombre debe tener al menos 3 caracteres';
-                            isValid = false;
-                        }
-                        break;
-
-                    case 'category':
-                        if (!value) {
-                            errorMsg = 'Por favor, selecciona un rubro';
-                            isValid = false;
-                        }
-                        break;
-
-                    case 'email':
-                        if (!value.trim()) {
-                            errorMsg = 'El email es requerido';
-                            isValid = false;
-                        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-                            errorMsg = 'Email inválido (ej: tu@email.com)';
-                            isValid = false;
-                        }
-                        break;
-
-                    case 'phone':
-                        if (value && !/^[\d\s\-\+\(\)]{6,}$/.test(value)) {
-                            errorMsg = 'Teléfono inválido';
-                            isValid = false;
-                        }
-                        break;
-
-                    case 'message':
-                        if (!value.trim()) {
-                            errorMsg = 'El mensaje es requerido';
-                            isValid = false;
-                        } else if (value.trim().length < 10) {
-                            errorMsg = 'El mensaje debe tener al menos 10 caracteres';
-                            isValid = false;
-                        } else if (value.length > 500) {
-                            errorMsg = 'El mensaje no puede exceder 500 caracteres';
-                            isValid = false;
-                        }
-                        break;
-                }
-
-                if (errorElement) {
-                    errorElement.textContent = errorMsg;
-                }
-
-                if (inputElement) {
-                    inputElement.classList.remove('form__invalid', 'form__valid');
-                    if (value.trim()) {
-                        inputElement.classList.add(isValid ? 'form__valid' : 'form__invalid');
-                    }
-                }
-
-                return isValid;
-            }
-        }
-
-        function setupSmoothScroll() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href !== '#' && document.querySelector(href)) {
-                        e.preventDefault();
-                        document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
-        }
-    </script>
+    <script src="js/config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
