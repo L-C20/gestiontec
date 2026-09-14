@@ -328,6 +328,45 @@
         </div>
     </footer>
 
+    <!-- ==================== MODAL DE SUSCRIPCIÓN ==================== -->
+    <div class="checkout-modal" id="checkoutModal" hidden>
+        <div class="checkout-modal__backdrop" data-checkout-close></div>
+        <div class="checkout-modal__box" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+            <button type="button" class="checkout-modal__close" data-checkout-close aria-label="Cerrar">&times;</button>
+            <h3 id="checkoutTitle">Suscribirme al plan <span id="checkoutPlanName"></span></h3>
+            <p class="checkout-modal__hint">Completá tus datos. Vas a ser redirigido a Mercado Pago para autorizar el cobro mensual de forma segura.</p>
+
+            <form id="checkoutForm">
+                <input type="hidden" id="checkoutPlanId">
+
+                <div class="form__group">
+                    <label for="checkoutName">Nombre completo <span class="form__required">*</span></label>
+                    <input type="text" id="checkoutName" placeholder="Tu nombre completo" required minlength="3">
+                </div>
+
+                <div class="form__group">
+                    <label for="checkoutBusiness">Nombre del negocio</label>
+                    <input type="text" id="checkoutBusiness" placeholder="Ej: Mi Consultorio Dental">
+                </div>
+
+                <div class="form__row">
+                    <div class="form__group form__group--half">
+                        <label for="checkoutEmail">Email <span class="form__required">*</span></label>
+                        <input type="email" id="checkoutEmail" placeholder="tu@email.com" required>
+                    </div>
+                    <div class="form__group form__group--half">
+                        <label for="checkoutPhone">Teléfono/WhatsApp</label>
+                        <input type="tel" id="checkoutPhone" placeholder="+54 9 XX XXXX-XXXX">
+                    </div>
+                </div>
+
+                <span class="form__error" id="checkoutError"></span>
+
+                <button type="submit" class="form__submit" id="checkoutSubmit">Ir a pagar</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
     {

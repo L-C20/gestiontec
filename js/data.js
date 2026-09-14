@@ -73,7 +73,7 @@ const DATA = {
                 { text: "Integraciones", included: false },
                 { text: "API access", included: false }
             ],
-            cta: "Solicitar información"
+            cta: "Suscribirme"
         },
         {
             id: "profesional",
@@ -93,7 +93,7 @@ const DATA = {
                 { text: "Hasta 20 usuarios", included: false },
                 { text: "API access", included: false }
             ],
-            cta: "Solicitar información"
+            cta: "Suscribirme"
         },
         {
             id: "empresa",
@@ -113,7 +113,7 @@ const DATA = {
                 { text: "Soporte 24/7", included: true },
                 { text: "Consultoría incluida", included: true }
             ],
-            cta: "Solicitar información"
+            cta: "Suscribirme"
         }
     ],
 
@@ -153,3 +153,9 @@ const DATA = {
         }
     ]
 };
+
+// Permite que el backend (Node) use los mismos datos que el frontend,
+// evitando duplicar precios de planes en dos lugares.
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = DATA;
+}

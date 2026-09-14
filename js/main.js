@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupMenuToggle();
     setCurrentYear();
     setupFormValidation();
+    setupCheckout();
     setupSmoothScroll();
     setupScrollReveal();
 });
@@ -99,7 +100,7 @@ function renderPlans() {
                     <li class="plan-card__list-item ${f.included ? '' : 'plan-card__list-item--off'}">${f.text}</li>
                 `).join('')}
             </ul>
-            <button class="btn-primary btn-block">${p.cta}</button>
+            <button class="btn-primary btn-block" data-plan-id="${p.id}" data-plan-name="${p.name}">${p.cta}</button>
         </div>
     `).join('')}</div>`;
 }
@@ -330,6 +331,89 @@ function setupFormValidation() {
         }
         return isValid;
     }
+}
+
+// ==================== CHECKOUT (SUSCRIPCIÓN) ====================
+
+function setupCheckout() {
+    const modal = document.getElementById('checkoutModal');
+    if (!modal) return;
+
+    const form = document.getElementById('checkoutForm');
+    const planNameEl = document.getElementById('checkoutPlanName');
+    const planIdInput = document.getElementById('checkoutPlanId');
+    const errorEl = document.getElementById('checkoutError');
+    const submitBtn = document.getElementById('checkoutSubmit');
+
+    function openModal(planId, planName) {
+        form.reset();
+        planIdInput.value = planId;
+        planNameEl.textContent = planName;
+        errorEl.textContent = '';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Ir a pagar';
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.hidden = true;
+        document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('#plansGrid [data-plan-id]').forEach(btn => {
+        btn.addEventListener('click', () => openModal(btn.dataset.planId, btn.dataset.planName));
+    });
+
+    modal.querySelectorAll('[data-checkout-close]').forEach(el => {
+        el.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.hidden) closeModal();
+    });
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        errorEl.textContent = '';
+
+        const name = document.getElementById('checkoutName').value.trim();
+        const email = document.getElementById('checkoutEmail').value.trim();
+        const phone = document.getElementById('checkoutPhone').value.trim();
+        const business = document.getElementById('checkoutBusiness').value.trim();
+        const planId = planIdInput.value;
+
+        if (name.length < 3) {
+            errorEl.textContent = 'Ingresá tu nombre completo.';
+            return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            errorEl.textContent = 'Ingresá un email válido.';
+            return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Redirigiendo a Mercado Pago...';
+
+        try {
+            const res = await fetch('/api/subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ planId, name, email, phone, business })
+            });
+            const data = await res.json();
+
+            if (!res.ok) {
+                throw new Error(data.error || 'No pudimos procesar la solicitud.');
+            }
+
+            window.location.href = data.init_point;
+        } catch (err) {
+            errorEl.textContent = err.message || 'Ocurrió un error. Intentá de nuevo.';
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Ir a pagar';
+        }
+    });
 }
 
 // ==================== SMOOTH SCROLL ====================

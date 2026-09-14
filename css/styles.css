@@ -1025,6 +1025,63 @@ input.form__valid, textarea.form__valid, select.form__valid { border-color: var(
     color: rgba(255, 255, 255, 0.55);
 }
 
+/* ==================== MODAL DE SUSCRIPCIÓN ==================== */
+
+.checkout-modal {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-5);
+}
+
+.checkout-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(9, 41, 66, 0.55);
+    backdrop-filter: blur(2px);
+}
+
+.checkout-modal__box {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--color-surface);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    padding: var(--space-6);
+    animation: slideInUp 0.3s ease-out;
+}
+
+.checkout-modal__box h3 { margin-bottom: var(--space-2); padding-right: var(--space-8); }
+.checkout-modal__box #checkoutPlanName { color: var(--color-primary); }
+
+.checkout-modal__hint {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-5);
+}
+
+.checkout-modal__close {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%;
+    background: var(--color-surface-alt);
+    color: var(--color-text-secondary);
+    font-size: 1.25rem;
+    line-height: 1;
+    box-shadow: none;
+}
+.checkout-modal__close:hover { background: var(--color-surface-dark); color: var(--color-text-primary); }
+
 /* ==================== ANIMACIÓN AL SCROLL ==================== */
 
 .reveal {

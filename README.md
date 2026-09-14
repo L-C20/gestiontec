@@ -27,8 +27,10 @@ GESTIONTEC es un sitio web moderno, responsivo y optimizado que actúa como port
 - **CSS3** — Diseño responsivo, variables CSS, animaciones
 - **JavaScript Vanilla** — Renderizado dinámico, validación, interactividad
 - **Google Fonts** — Inter (tipografía profesional)
+- **Node.js + Express** — backend mínimo para las suscripciones (ver sección de Mercado Pago)
 
-**Sin frameworks ni librerías externas** — Arquitectura simple y mantenible
+**Frontend sin frameworks** — el sitio en sí sigue siendo HTML/CSS/JS puro; el
+backend es lo mínimo indispensable para procesar pagos de forma segura.
 
 ---
 
@@ -36,20 +38,28 @@ GESTIONTEC es un sitio web moderno, responsivo y optimizado que actúa como port
 
 ```
 /
-├── index.html              # Página principal (única)
+├── index.html              # Página principal
+├── gracias.html            # Página de confirmación post-pago
 ├── css/
 │   └── styles.css         # Todos los estilos
 ├── js/
-│   ├── config.js          # Configuración (integrada en index.html)
-│   ├── data.js            # Datos (integrada en index.html)
-│   └── main.js            # Lógica (integrada en index.html)
+│   ├── config.js          # Configuración (contacto, textos generales)
+│   ├── data.js            # Soluciones, planes y FAQ (usado por frontend Y backend)
+│   └── main.js            # Renderizado dinámico e interactividad
+├── server.js               # Backend Express (sirve el sitio + API de pagos)
+├── routes/
+│   ├── subscribe.js        # POST /api/subscribe — crea la suscripción en Mercado Pago
+│   └── webhook.js          # POST /api/webhooks/mercadopago — recibe confirmaciones
+├── lib/
+│   ├── mercadopago.js      # Cliente de Mercado Pago
+│   └── notify.js           # Aviso por email (Nodemailer) y WhatsApp (CallMeBot)
+├── package.json
+├── .env.example             # Variables de entorno necesarias (sin valores reales)
 ├── assets/
 │   └── images/            # Imágenes optimizadas (cuando se agreguen)
 ├── README.md              # Esta documentación
 └── .gitignore             # Exclusiones Git
 ```
-
-**Nota:** Por razones de compatibilidad con archivos locales (file://), toda la lógica JavaScript está incrustada directamente en `index.html` dentro de un `<script>`.
 
 ---
 
@@ -249,6 +259,56 @@ El formulario está preparado para integración backend:
 
 ---
 
+## 💳 Suscripciones y Pagos (Mercado Pago)
+
+El sitio ahora tiene un backend mínimo (`server.js` + Express) para procesar
+suscripciones recurrentes reales con Mercado Pago. Cada plan de `js/data.js`
+se puede pagar desde un modal ("Suscribirme") que:
+
+1. Pide nombre, negocio, email y teléfono.
+2. Crea una suscripción (`preapproval`) en Mercado Pago desde el backend
+   (el monto sale siempre de `js/data.js`, nunca del navegador).
+3. Redirige al usuario al checkout de Mercado Pago para autorizar el cobro
+   mensual con su tarjeta.
+4. Cuando Mercado Pago confirma el pago (webhook), te llega un aviso por
+   email y WhatsApp para activar el acceso manualmente.
+
+### Configuración local
+
+1. `cp .env.example .env` y completá los valores (ver comentarios en el
+   archivo — Access Token de Mercado Pago, SMTP para el email, CallMeBot
+   para WhatsApp).
+2. `npm install`
+3. `npm start` (o `node server.js`) y abrí `http://localhost:3000`.
+
+**Importante:** usá el Access Token de **prueba** de Mercado Pago mientras
+testeás, no el de producción, para no generar cobros reales por error.
+
+### Probar el webhook en local
+
+Mercado Pago necesita pegarle a una URL pública, así que en tu compu hace
+falta un túnel (por ejemplo [ngrok](https://ngrok.com)):
+
+```bash
+ngrok http 3000
+```
+
+Usá la URL que te da ngrok como `PUBLIC_BASE_URL` en tu `.env` mientras
+probás. Una vez desplegado en Railway, `PUBLIC_BASE_URL` pasa a ser la URL
+real que te asigna Railway.
+
+### Desplegar en Railway
+
+1. Creá un proyecto nuevo en Railway conectado a este repo (detecta Node
+   automáticamente por `package.json`, no hace falta Dockerfile).
+2. Cargá las mismas variables de `.env.example` en la sección Variables de
+   Railway, con `PUBLIC_BASE_URL` apuntando a la URL pública que te da
+   Railway.
+3. Cuando tengas todo probado con el Access Token de prueba, cambiá
+   `MP_ACCESS_TOKEN` por el de producción.
+
+---
+
 ## 📊 Validación del Formulario
 
 **Frontend:**
@@ -293,21 +353,26 @@ Editar `css/styles.css` en `:root`:
 ### Localmente
 
 ```bash
-# Abrir directamente
-open index.html
-
-# O con un servidor simple
-python -m http.server 8000
-# Luego: http://localhost:8000
+npm install
+cp .env.example .env   # completar valores (ver sección de Mercado Pago)
+npm start
+# Luego: http://localhost:3000
 ```
 
-### En Producción
+Si solo querés ver el diseño sin tocar el checkout, también podés abrir el
+sitio con un servidor estático simple (los botones de pago no van a
+funcionar sin el backend corriendo):
 
-1. Subir archivos a tu servidor/hosting
-2. Cambiar `og:url` en meta tags a tu dominio real
-3. Cambiar `canonical` URL
-4. Reemplazar email de contacto en `contactPoint` (schema.org)
-5. Agregar endpoint real en formulario `action`
+```bash
+python -m http.server 8000
+```
+
+### En Producción (Railway)
+
+1. Ver la sección "Desplegar en Railway" más arriba.
+2. Cambiar `og:url` en meta tags a tu dominio real.
+3. Cambiar `canonical` URL.
+4. Reemplazar email de contacto en `contactPoint` (schema.org).
 
 ---
 

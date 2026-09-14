@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>¡Gracias! — GESTIONTEC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .thanks {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: var(--space-8);
+        }
+        .thanks__box { max-width: 480px; }
+        .thanks__icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto var(--space-6);
+            border-radius: 50%;
+            background: var(--color-primary-tint);
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+        }
+    </style>
+</head>
+<body>
+    <section class="thanks">
+        <div class="thanks__box">
+            <div class="thanks__icon">✓</div>
+            <h1>¡Listo, gracias!</h1>
+            <p class="section__description">
+                Recibimos tu suscripción. En breve nos vamos a poner en contacto
+                para activar tu acceso.
+            </p>
+            <div class="hero__ctas" style="justify-content: center; margin-top: var(--space-6);">
+                <a href="index.html" class="hero__cta hero__cta--secondary">Volver al inicio</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
