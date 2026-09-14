@@ -1027,6 +1027,8 @@ input.form__valid, textarea.form__valid, select.form__valid { border-color: var(
 
 /* ==================== MODAL DE SUSCRIPCIÓN ==================== */
 
+.checkout-modal[hidden] { display: none; }
+
 .checkout-modal {
     position: fixed;
     inset: 0;
