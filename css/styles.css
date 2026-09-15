@@ -125,7 +125,7 @@ body {
 }
 
 main, section {
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 img, svg {
