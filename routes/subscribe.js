@@ -12,7 +12,7 @@ function isValidEmail(email) {
 // en el sitio público. Solo responde si ALLOW_TEST_PLAN=true en el entorno;
 // sacar esa variable (o este bloque) una vez terminada la prueba.
 const TEST_PLAN_ID = '__test_real__';
-const TEST_PLAN = { id: TEST_PLAN_ID, name: 'Prueba real', price: 10, currency: 'ARS', period: 'mes' };
+const TEST_PLAN = { id: TEST_PLAN_ID, name: 'Prueba real', price: 15, currency: 'ARS', period: 'mes' };
 
 router.post('/subscribe', async (req, res) => {
     const { planId, name, email, phone, business } = req.body || {};
