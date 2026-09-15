@@ -42,7 +42,8 @@ router.post('/subscribe', async (req, res) => {
                     frequency_type: 'months',
                     transaction_amount: plan.price,
                     currency_id: plan.currency || 'ARS'
-                }
+                },
+                status: 'pending'
             }
         });
 
