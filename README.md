@@ -185,19 +185,23 @@ Totalmente responsivo sin scroll horizontal:
 
 ### Cambiar Precios
 
-Editar `index.html`, buscar `const DATA = {` y modificar en `plans`:
+En `js/data.js`, cada sistema (`DATA.solutions`) tiene su propio `pricing` —
+los 3 sistemas comparten la misma estructura de planes (`DATA.planTiers`:
+nombre, features, etc.) pero cada uno cobra distinto:
 
 ```javascript
+// DATA.solutions
 {
-    id: "inicial",
-    price: 9900,  // ← Cambiar aquí
+    id: "medicos",
     ...
+    pricing: { inicial: 44900, profesional: 89900, empresa: 199900 }  // ← Cambiar acá
 }
 ```
 
 ### Agregar un Nuevo Sistema
 
-En `js/data.js`, dentro de `DATA.solutions` (los 3 sistemas comparten los mismos planes/precios de `DATA.plans`):
+En `js/data.js`, dentro de `DATA.solutions`, agregando también su `pricing`
+para los 3 planes existentes (`inicial`/`profesional`/`empresa`):
 
 ```javascript
 {
@@ -205,7 +209,8 @@ En `js/data.js`, dentro de `DATA.solutions` (los 3 sistemas comparten los mismos
     name: "GestionTec NuevoRubro",
     rubric: "Rubro",
     description: "Descripción corta, una línea.",
-    status: "Disponible"
+    status: "Disponible",
+    pricing: { inicial: 34900, profesional: 69900, empresa: 149900 }
 }
 ```
 

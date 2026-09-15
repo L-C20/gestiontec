@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderHeroSystems();
     renderPricingSystemTabs();
     selectSystem(selectedSystemId);
-    renderPlans();
     renderPricingAddon();
     renderFAQ();
     renderBenefits();
@@ -94,6 +93,8 @@ function selectSystem(systemId, { scroll = false } = {}) {
     const heading = document.getElementById('pricingSystemHeading');
     if (heading && system) heading.textContent = `Planes para ${system.name}`;
 
+    renderPlans();
+
     if (scroll) {
         document.getElementById('planes')?.scrollIntoView({ behavior: 'smooth' });
     }
@@ -121,13 +122,15 @@ function renderPlans() {
     const grid = document.getElementById('plansGrid');
     if (!grid) return;
 
-    grid.innerHTML = `<div class="grid grid--3col pricing__grid">${DATA.plans.map(p => `
+    const system = DATA.solutions.find(s => s.id === selectedSystemId) || DATA.solutions[0];
+
+    grid.innerHTML = `<div class="grid grid--3col pricing__grid">${DATA.planTiers.map(p => `
         <div class="plan-card ${p.highlight ? 'plan-card--highlight' : ''} reveal">
             ${p.highlight ? '<span class="plan-card__ribbon">Más elegido</span>' : ''}
             <h3 class="plan-card__name">${p.name}</h3>
             <p class="plan-card__desc">${p.description}</p>
             <div class="plan-card__price-row">
-                <span class="plan-card__price">$${p.price.toLocaleString('es-AR')}</span>
+                <span class="plan-card__price">$${system.pricing[p.id].toLocaleString('es-AR')}</span>
                 <span class="plan-card__period">${p.currency} / ${p.period}</span>
             </div>
             <ul class="plan-card__list">
@@ -138,6 +141,11 @@ function renderPlans() {
             <button class="btn-primary btn-block" data-plan-id="${p.id}" data-plan-name="${p.name}">${p.cta}</button>
         </div>
     `).join('')}</div>`;
+
+    // Los cards recién insertados no fueron observados por el
+    // IntersectionObserver de setupScrollReveal (ese solo corre una vez al
+    // cargar la página), así que quedarían con opacity:0 para siempre.
+    grid.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
 }
 
 // ==================== BENEFICIOS ====================
@@ -401,8 +409,11 @@ function setupCheckout() {
         document.body.style.overflow = '';
     }
 
-    document.querySelectorAll('#plansGrid [data-plan-id]').forEach(btn => {
-        btn.addEventListener('click', () => openModal(btn.dataset.planId, btn.dataset.planName));
+    // Delegado en el contenedor (no en los botones) porque #plansGrid se
+    // vuelve a renderizar cada vez que se cambia de sistema en Planes.
+    document.getElementById('plansGrid')?.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-plan-id]');
+        if (btn) openModal(btn.dataset.planId, btn.dataset.planName);
     });
 
     modal.querySelectorAll('[data-checkout-close]').forEach(el => {

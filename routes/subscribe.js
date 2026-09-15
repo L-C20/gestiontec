@@ -25,16 +25,24 @@ router.post('/subscribe', async (req, res) => {
     }
 
     const isTestPlan = planId === TEST_PLAN_ID && process.env.ALLOW_TEST_PLAN === 'true';
-    const plan = isTestPlan ? TEST_PLAN : DATA.plans.find(p => p.id === planId);
-    if (!plan) {
-        return res.status(400).json({ error: 'El plan seleccionado no existe.' });
-    }
 
     const system = DATA.solutions.find(s => s.id === systemId);
     if (!isTestPlan && !system) {
         return res.status(400).json({ error: 'El sistema seleccionado no existe.' });
     }
     const systemName = system ? system.name : 'Prueba real';
+
+    let plan;
+    if (isTestPlan) {
+        plan = TEST_PLAN;
+    } else {
+        const tier = DATA.planTiers.find(p => p.id === planId);
+        const price = tier && system.pricing[planId];
+        plan = tier && price ? { ...tier, price } : null;
+    }
+    if (!plan) {
+        return res.status(400).json({ error: 'El plan seleccionado no existe.' });
+    }
 
     const baseUrl = process.env.PUBLIC_BASE_URL;
     if (!baseUrl) {

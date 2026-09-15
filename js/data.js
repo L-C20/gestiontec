@@ -4,37 +4,43 @@
  */
 
 const DATA = {
-    // Sistemas (un sistema por rubro, mismos planes y precios para los 3)
+    // Sistemas (un sistema por rubro). Los 3 comparten la misma estructura de
+    // planes (ver planTiers), pero cada uno tiene sus propios precios en
+    // "pricing" — médicos cuesta más que tiendas/academias, siguiendo lo que
+    // cobra la competencia real para cada rubro.
     solutions: [
         {
             id: "medicos",
             name: "GestionTec Médicos",
             rubric: "Consultorios y clínicas",
             description: "Turnos, historiales y facturación en un solo lugar.",
-            status: "Disponible"
+            status: "Disponible",
+            pricing: { inicial: 44900, profesional: 89900, empresa: 199900 }
         },
         {
             id: "academias",
             name: "GestionTec Academias",
             rubric: "Academias y centros de enseñanza",
             description: "Alumnos, asistencia, pagos y cursos organizados.",
-            status: "Disponible"
+            status: "Disponible",
+            pricing: { inicial: 29900, profesional: 59900, empresa: 129900 }
         },
         {
             id: "tiendas",
             name: "GestionTec Tiendas",
             rubric: "Tiendas y comercios",
             description: "Ventas, stock y clientes desde cualquier lugar.",
-            status: "Disponible"
+            status: "Disponible",
+            pricing: { inicial: 34900, profesional: 69900, empresa: 149900 }
         }
     ],
 
-    // Planes de suscripción
-    plans: [
+    // Estructura de planes (nombre, features, etc.) compartida por los 3
+    // sistemas. El precio real de cada uno sale de solutions[].pricing.
+    planTiers: [
         {
             id: "inicial",
             name: "Inicial",
-            price: 34900,
             currency: "ARS",
             period: "mes",
             description: "Para emprendimientos y negocios pequeños",
@@ -54,7 +60,6 @@ const DATA = {
         {
             id: "profesional",
             name: "Profesional",
-            price: 69900,
             currency: "ARS",
             period: "mes",
             description: "Para pequeñas empresas en crecimiento",
@@ -74,7 +79,6 @@ const DATA = {
         {
             id: "empresa",
             name: "Empresa",
-            price: 149900,
             currency: "ARS",
             period: "mes",
             description: "Para medianas empresas",
