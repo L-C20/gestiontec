@@ -565,6 +565,8 @@ section { padding: var(--space-16) var(--space-5); }
     font-family: inherit;
     cursor: pointer;
     transition: all var(--transition-base);
+    min-width: 0;
+    width: 100%;
 }
 .system-card:hover { border-color: var(--color-border-strong); box-shadow: var(--shadow-md); transform: translateY(-3px); }
 
