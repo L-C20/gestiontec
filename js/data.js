@@ -34,7 +34,7 @@ const DATA = {
         {
             id: "inicial",
             name: "Inicial",
-            price: 9900,
+            price: 34900,
             currency: "ARS",
             period: "mes",
             description: "Para emprendimientos y negocios pequeños",
@@ -54,7 +54,7 @@ const DATA = {
         {
             id: "profesional",
             name: "Profesional",
-            price: 24900,
+            price: 69900,
             currency: "ARS",
             period: "mes",
             description: "Para pequeñas empresas en crecimiento",
@@ -74,7 +74,7 @@ const DATA = {
         {
             id: "empresa",
             name: "Empresa",
-            price: 39900,
+            price: 149900,
             currency: "ARS",
             period: "mes",
             description: "Para medianas empresas",

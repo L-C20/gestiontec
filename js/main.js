@@ -106,11 +106,11 @@ function renderPricingAddon() {
     el.innerHTML = DATA.addons.map(a => `
         <div class="addon-card">
             <div>
-                <span class="addon-card__label">Complemento opcional</span>
+                <span class="addon-card__label">✨ Complemento opcional</span>
                 <h4 class="addon-card__title">${a.name}</h4>
                 <p class="addon-card__desc">${a.description}</p>
             </div>
-            <a href="#contacto" class="btn-secondary btn-sm">Consultar precio</a>
+            <a href="#contacto" class="addon-card__cta">Consultar precio →</a>
         </div>
     `).join('');
 }
