@@ -276,10 +276,18 @@ se puede pagar desde un modal ("Suscribirme") que:
 ### Configuración local
 
 1. `cp .env.example .env` y completá los valores (ver comentarios en el
-   archivo — Access Token de Mercado Pago, SMTP para el email, CallMeBot
-   para WhatsApp).
+   archivo — Access Token de Mercado Pago, API Key de Resend para el email,
+   CallMeBot para WhatsApp).
 2. `npm install`
 3. `npm start` (o `node server.js`) y abrí `http://localhost:3000`.
+
+**Nota sobre el email:** el aviso se manda vía la API HTTP de
+[Resend](https://resend.com) (`RESEND_API_KEY`), no por SMTP directo — Railway
+bloquea los puertos SMTP (587/465/25) fuera del plan Pro, y Resend usa HTTPS
+(443), que nunca está bloqueado. Sin verificar un dominio propio, los emails
+salen desde `onboarding@resend.dev` y Gmail puede mandarlos a Spam la primera
+vez; basta con marcar ese primer email como "No es spam" para que los
+siguientes lleguen a la bandeja de entrada.
 
 **Importante:** usá el Access Token de **prueba** de Mercado Pago mientras
 testeás, no el de producción, para no generar cobros reales por error.
