@@ -288,7 +288,7 @@ button:focus-visible, .btn:focus-visible {
     padding: 0 var(--space-5);
 }
 
-section { padding: var(--space-16) var(--space-5); }
+section { padding: var(--space-12) var(--space-5); }
 
 /* ==================== HEADER ==================== */
 
@@ -547,7 +547,7 @@ section { padding: var(--space-16) var(--space-5); }
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-5);
-    margin-top: var(--space-10);
+    margin-top: var(--space-8);
     text-align: left;
 }
 
@@ -1132,11 +1132,12 @@ input.form__valid, textarea.form__valid, select.form__valid { border-color: var(
 
     .grid--4col { grid-template-columns: repeat(2, 1fr); }
     .grid--3col { grid-template-columns: repeat(2, 1fr); }
-    .hero__systems { grid-template-columns: repeat(2, 1fr); }
     .footer__content { grid-template-columns: 1fr 1fr; }
     .footer__brand { grid-column: span 2; }
+}
 
-    section { padding: var(--space-12) var(--space-5); }
+@media (max-width: 860px) {
+    .hero__systems { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 767px) {
@@ -1150,7 +1151,6 @@ input.form__valid, textarea.form__valid, select.form__valid { border-color: var(
     .hero__cta { width: 100%; justify-content: center; }
 
     .grid--2col, .grid--3col, .grid--4col { grid-template-columns: 1fr; }
-    .hero__systems { grid-template-columns: 1fr; }
     .steps::before { display: none; }
 
     .plan-card { padding: var(--space-5); }
