@@ -62,7 +62,13 @@ router.post('/subscribe', async (req, res) => {
             ].join('\n')
         ).catch(() => {});
 
-        return res.json({ init_point: result.init_point });
+        // Bug conocido de Mercado Pago (activo desde 2026-09-02): el init_point
+        // viene con "&activation=true" y esa página da "Esta página no existe".
+        // Sin ese parámetro, la misma URL funciona bien.
+        const checkoutUrl = new URL(result.init_point);
+        checkoutUrl.searchParams.delete('activation');
+
+        return res.json({ init_point: checkoutUrl.toString() });
     } catch (err) {
         console.error('[subscribe] Error creando la suscripción:', err.message);
         return res.status(502).json({ error: 'No pudimos iniciar la suscripción con Mercado Pago. Intentá de nuevo en unos minutos.' });
