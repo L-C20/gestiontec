@@ -24,48 +24,39 @@ const CONFIG = {
         instagram: "https://instagram.com/gestiontec"
     },
 
-    // Métricas mostradas debajo de los CTA del hero
-    heroStats: [
-        { value: "3", label: "Rubros cubiertos" },
-        { value: "100%", label: "Basado en la nube" },
-        { value: "24/7", label: "Acceso disponible" }
-    ],
-
     // Bloques de "¿Qué es GESTIONTEC?"
     whatIsFeatures: [
-        { mark: "01", title: "Centralizás todo", text: "Toda la información de tu negocio en un mismo lugar, sin planillas sueltas." },
-        { mark: "02", title: "Automatizás procesos", text: "Menos tareas manuales repetitivas, más tiempo para lo importante." },
-        { mark: "03", title: "Accedés desde cualquier lugar", text: "Cloud, disponible desde PC, tablet o celular en todo momento." }
+        { mark: "01", title: "Centralizás todo", text: "Sin planillas sueltas." },
+        { mark: "02", title: "Automatizás procesos", text: "Menos tareas manuales." },
+        { mark: "03", title: "Accedés desde cualquier lugar", text: "Cloud, en cualquier dispositivo." }
     ],
 
     benefits: [
-        { title: "Más organización", description: "Centraliza toda tu información en un único lugar" },
-        { title: "Menos tareas manuales", description: "Automatiza procesos repetitivos y ahorra tiempo" },
-        { title: "Información centralizada", description: "Accede a todos tus datos desde cualquier dispositivo" },
-        { title: "Mayor control", description: "Visualiza el estado de tu negocio en tiempo real" },
-        { title: "Acceso rápido", description: "Reportes y dashboards listos en segundos" },
-        { title: "Adaptación a tu negocio", description: "Personalización según tus necesidades específicas" },
-        { title: "Evolución constante", description: "Nuevas características y mejoras regularmente" },
-        { title: "Soporte profesional", description: "Equipo dedicado disponible para ayudarte" }
+        { title: "Más organización", description: "Toda tu información en un solo lugar" },
+        { title: "Menos tareas manuales", description: "Automatizá lo repetitivo" },
+        { title: "Mayor control", description: "Tu negocio, en tiempo real" },
+        { title: "Reportes al instante", description: "Dashboards listos en segundos" },
+        { title: "Se adapta a vos", description: "Personalización según tu rubro" },
+        { title: "Soporte real", description: "Equipo disponible para ayudarte" }
     ],
 
     steps: [
-        { number: 1, title: "Elegís una solución", description: "Selecciona el sistema que se adapte a tu negocio" },
-        { number: 2, title: "Configuramos el sistema", description: "Personalizamos la solución según tus necesidades" },
-        { number: 3, title: "Comenzás a utilizarlo", description: "Acceso inmediato a tu panel de administración" },
-        { number: 4, title: "Recibís soporte", description: "Apoyo continuo y evolución de tu sistema" }
+        { number: 1, title: "Elegís tu sistema", description: "Según tu rubro" },
+        { number: 2, title: "Lo configuramos", description: "A medida de tu negocio" },
+        { number: 3, title: "Empezás a usarlo", description: "Acceso inmediato" },
+        { number: 4, title: "Tenés soporte", description: "Siempre disponible" }
     ],
 
     // icon: "shield" | "lock" | "refresh" (ver ICONS en main.js)
     security: [
-        { icon: "shield", title: "Desarrollo seguro", description: "Seguimos buenas prácticas de seguridad en el desarrollo" },
-        { icon: "lock", title: "Protección de acceso", description: "Autenticación y control de permisos robustos" },
-        { icon: "refresh", title: "Actualizaciones", description: "Parches de seguridad y mejoras regularmente" }
+        { icon: "shield", title: "Desarrollo seguro", description: "Buenas prácticas desde el diseño" },
+        { icon: "lock", title: "Acceso protegido", description: "Autenticación y permisos por usuario" },
+        { icon: "refresh", title: "Siempre actualizado", description: "Mejoras y parches regulares" }
     ],
 
     growthPoints: [
-        { title: "Escalabilidad", description: "Crece sin limitaciones técnicas" },
-        { title: "Flexibilidad", description: "Cambia de plan o agrega módulos cuando lo necesites" },
-        { title: "Integración", description: "Conecta con otras herramientas que ya utilizas" }
+        { title: "Escalabilidad", description: "Crece sin límites técnicos" },
+        { title: "Flexibilidad", description: "Cambiá de plan cuando quieras" },
+        { title: "Integración", description: "Se conecta con tus herramientas" }
     ]
 };

@@ -4,52 +4,28 @@
  */
 
 const DATA = {
-    // Soluciones
+    // Sistemas (un sistema por rubro, mismos planes y precios para los 3)
     solutions: [
         {
-            id: "quirogestion",
-            name: "QuiroGest",
-            rubric: "Consultorios",
-            description: "Sistema especializado para la gestión integral de consultorios odontológicos y de salud",
-            features: [
-                "Gestión de turnos",
-                "Historiales de pacientes",
-                "Facturación y cobros",
-                "Control de inventario",
-                "Reportes y estadísticas"
-            ],
-            status: "Disponible",
-            cta: "Conocer más"
+            id: "medicos",
+            name: "GestionTec Médicos",
+            rubric: "Consultorios y clínicas",
+            description: "Turnos, historiales y facturación en un solo lugar.",
+            status: "Disponible"
         },
         {
-            id: "solution-2",
-            name: "ComercioSystem",
-            rubric: "Comercios",
-            description: "Solución integral para tiendas y comercios minoristas",
-            features: [
-                "Punto de venta",
-                "Gestión de inventario",
-                "Control de ventas",
-                "Registros de clientes",
-                "Análisis de ventas"
-            ],
-            status: "En desarrollo",
-            cta: "Notificarme"
+            id: "academias",
+            name: "GestionTec Academias",
+            rubric: "Academias y centros de enseñanza",
+            description: "Alumnos, asistencia, pagos y cursos organizados.",
+            status: "Disponible"
         },
         {
-            id: "solution-3",
-            name: "ProGest",
-            rubric: "Profesionales",
-            description: "Sistema para profesionales independientes que necesitan organizar su trabajo",
-            features: [
-                "Agenda profesional",
-                "Gestión de clientes",
-                "Cotizaciones",
-                "Facturación",
-                "Seguimiento de proyectos"
-            ],
-            status: "En desarrollo",
-            cta: "Notificarme"
+            id: "tiendas",
+            name: "GestionTec Tiendas",
+            rubric: "Tiendas y comercios",
+            description: "Ventas, stock y clientes desde cualquier lugar.",
+            status: "Disponible"
         }
     ],
 
@@ -117,39 +93,47 @@ const DATA = {
         }
     ],
 
+    // Complementos opcionales (pago aparte, disponibles para cualquier plan/sistema)
+    addons: [
+        {
+            id: "landing",
+            name: "Página web promocional",
+            description: "Sitio de presentación para tu negocio, listo para compartir.",
+            price: null,
+            currency: "ARS",
+            period: "mes"
+        }
+    ],
+
     // Preguntas frecuentes
     faq: [
         {
             question: "¿Qué es GESTIONTEC?",
-            answer: "GESTIONTEC es una plataforma de sistemas de administración especializados para distintos tipos de negocios. Ofrecemos soluciones que centralizan información, automatizan procesos y facilitan la gestión empresarial."
+            answer: "Sistemas de administración por rubro: Médicos, Academias y Tiendas. Centralizan tu información y automatizan tareas repetitivas."
         },
         {
             question: "¿Qué incluye la suscripción?",
-            answer: "Cada plan incluye acceso al sistema, actualizaciones, soporte técnico y posibilidad de personalización según el plan elegido. Consulta los detalles de cada plan para conocer exactamente qué se incluye."
+            answer: "Acceso al sistema, actualizaciones y soporte técnico. El alcance exacto depende del plan elegido."
         },
         {
             question: "¿Puedo cambiar de plan?",
-            answer: "Sí, puedes cambiar de plan en cualquier momento. Los cambios se ajustan proporcionalmente en tu próxima facturación."
-        },
-        {
-            question: "¿El sistema se adapta a mi rubro?",
-            answer: "Contamos con soluciones especializadas para distintos rubros. Si tu sector no está cubierto, podemos personalizar una solución. Contactanos para más detalles."
+            answer: "Sí, cuando quieras. El cambio se ajusta en tu próxima facturación."
         },
         {
             question: "¿Necesito instalar algo?",
-            answer: "No. GESTIONTEC es una solución en la nube (cloud). Solo necesitas acceso a internet y un navegador web. Funciona desde cualquier dispositivo."
+            answer: "No. Es 100% en la nube: solo necesitás internet y un navegador."
         },
         {
-            question: "¿Puedo usarlo desde distintos dispositivos?",
-            answer: "Sí. Como es una solución web, puedes acceder desde computadoras, notebooks, tablets y smartphones. Tu información siempre está sincronizada."
+            question: "¿Puedo usarlo desde el celular?",
+            answer: "Sí, desde PC, tablet o celular, siempre sincronizado."
         },
         {
             question: "¿Cómo funciona el soporte?",
-            answer: "El soporte varía según el plan. Los planes Inicial incluyen soporte por email, Profesional incluye soporte prioritario, y Empresa incluye soporte 24/7 con consultoría."
+            answer: "Inicial: soporte por email. Profesional: soporte prioritario. Empresa: soporte 24/7 con consultoría."
         },
         {
             question: "¿Los precios pueden cambiar?",
-            answer: "Los precios pueden estar sujetos a cambios. Sin embargo, respetamos los precios vigentes para suscripciones activas. Te notificaremos con anticipación sobre cualquier cambio."
+            answer: "Pueden actualizarse, pero respetamos el precio vigente de tu suscripción activa y te avisamos antes de cualquier cambio."
         }
     ]
 };

@@ -11,16 +11,21 @@ const ICONS = {
     refresh: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11A8 8 0 1 0 6.5 17.5"/><path d="M20 5v6h-6"/></svg>'
 };
 
+// Sistema seleccionado actualmente (afecta la sección de Planes y el checkout)
+let selectedSystemId = DATA.solutions[0].id;
+
 document.addEventListener('DOMContentLoaded', () => {
     renderWhatIs();
-    renderSolutions();
+    renderHeroSystems();
+    renderPricingSystemTabs();
+    selectSystem(selectedSystemId);
     renderPlans();
+    renderPricingAddon();
     renderFAQ();
     renderBenefits();
     renderSteps();
     renderSecurity();
     renderGrowthPoints();
-    renderHeroStats();
     setupMenuToggle();
     setCurrentYear();
     setupFormValidation();
@@ -28,19 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setupSmoothScroll();
     setupScrollReveal();
 });
-
-// ==================== HERO ====================
-
-function renderHeroStats() {
-    const el = document.getElementById('heroStats');
-    if (!el) return;
-    el.innerHTML = CONFIG.heroStats.map(stat => `
-        <div class="hero__trust-item">
-            <span class="hero__trust-value">${stat.value}</span>
-            <span class="hero__trust-label">${stat.label}</span>
-        </div>
-    `).join('');
-}
 
 // ==================== QUÉ ES GESTIONTEC ====================
 
@@ -58,26 +50,69 @@ function renderWhatIs() {
     `).join('');
 }
 
-// ==================== SOLUCIONES ====================
+// ==================== SISTEMAS (hero + selector de planes) ====================
 
-function renderSolutions() {
-    const grid = document.getElementById('solutionsGrid');
-    if (!grid) return;
+function renderHeroSystems() {
+    const el = document.getElementById('soluciones');
+    if (!el) return;
 
-    grid.innerHTML = `<div class="grid grid--3col">${DATA.solutions.map(s => `
-        <div class="card reveal">
-            <span class="card__badge">${s.rubric}</span>
-            <h3 class="card__title">${s.name}</h3>
-            <p class="card__description">${s.description}</p>
-            <ul class="card__list">
-                ${s.features.map(f => `<li class="card__list-item">${f}</li>`).join('')}
-            </ul>
-            <div class="card__footer">
-                <span class="card__status ${s.status === 'Disponible' ? 'card__status--available' : ''}">${s.status}</span>
-                <button class="btn-primary btn-sm">${s.cta}</button>
+    el.innerHTML = DATA.solutions.map(s => `
+        <button type="button" class="system-card reveal" data-system-id="${s.id}">
+            <span class="system-card__badge ${s.status === 'Disponible' ? 'system-card__badge--available' : ''}">${s.status}</span>
+            <h3 class="system-card__title">${s.name}</h3>
+            <p class="system-card__desc">${s.description}</p>
+            <span class="system-card__cta">Ver planes →</span>
+        </button>
+    `).join('');
+
+    el.querySelectorAll('[data-system-id]').forEach(btn => {
+        btn.addEventListener('click', () => selectSystem(btn.dataset.systemId, { scroll: true }));
+    });
+}
+
+function renderPricingSystemTabs() {
+    const el = document.getElementById('pricingSystemTabs');
+    if (!el) return;
+
+    el.innerHTML = DATA.solutions.map(s => `
+        <button type="button" class="system-tab ${s.id === selectedSystemId ? 'system-tab--active' : ''}" data-system-id="${s.id}">${s.name}</button>
+    `).join('');
+
+    el.querySelectorAll('[data-system-id]').forEach(btn => {
+        btn.addEventListener('click', () => selectSystem(btn.dataset.systemId));
+    });
+}
+
+function selectSystem(systemId, { scroll = false } = {}) {
+    selectedSystemId = systemId;
+    const system = DATA.solutions.find(s => s.id === systemId);
+
+    document.querySelectorAll('#pricingSystemTabs [data-system-id]').forEach(btn => {
+        btn.classList.toggle('system-tab--active', btn.dataset.systemId === systemId);
+    });
+
+    const heading = document.getElementById('pricingSystemHeading');
+    if (heading && system) heading.textContent = `Planes para ${system.name}`;
+
+    if (scroll) {
+        document.getElementById('planes')?.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+function renderPricingAddon() {
+    const el = document.getElementById('pricingAddon');
+    if (!el) return;
+
+    el.innerHTML = DATA.addons.map(a => `
+        <div class="addon-card">
+            <div>
+                <span class="addon-card__label">Complemento opcional</span>
+                <h4 class="addon-card__title">${a.name}</h4>
+                <p class="addon-card__desc">${a.description}</p>
             </div>
+            <a href="#contacto" class="btn-secondary btn-sm">Consultar precio</a>
         </div>
-    `).join('')}</div>`;
+    `).join('');
 }
 
 // ==================== PLANES ====================
@@ -111,7 +146,7 @@ function renderBenefits() {
     const grid = document.getElementById('benefitsGrid');
     if (!grid) return;
 
-    grid.innerHTML = `<div class="grid grid--4col">${CONFIG.benefits.map((b, i) => `
+    grid.innerHTML = `<div class="grid grid--3col">${CONFIG.benefits.map((b, i) => `
         <div class="benefit-card reveal">
             <span class="benefit-card__icon">${String(i + 1).padStart(2, '0')}</span>
             <h4 class="benefit-card__title">${b.title}</h4>
@@ -341,14 +376,19 @@ function setupCheckout() {
 
     const form = document.getElementById('checkoutForm');
     const planNameEl = document.getElementById('checkoutPlanName');
+    const systemNameEl = document.getElementById('checkoutSystemName');
     const planIdInput = document.getElementById('checkoutPlanId');
+    const systemIdInput = document.getElementById('checkoutSystemId');
     const errorEl = document.getElementById('checkoutError');
     const submitBtn = document.getElementById('checkoutSubmit');
 
     function openModal(planId, planName) {
+        const system = DATA.solutions.find(s => s.id === selectedSystemId) || DATA.solutions[0];
         form.reset();
         planIdInput.value = planId;
+        systemIdInput.value = system.id;
         planNameEl.textContent = planName;
+        systemNameEl.textContent = system.name;
         errorEl.textContent = '';
         submitBtn.disabled = false;
         submitBtn.textContent = 'Ir a pagar';
@@ -382,6 +422,7 @@ function setupCheckout() {
         const phone = document.getElementById('checkoutPhone').value.trim();
         const business = document.getElementById('checkoutBusiness').value.trim();
         const planId = planIdInput.value;
+        const systemId = systemIdInput.value;
 
         if (name.length < 3) {
             errorEl.textContent = 'Ingresá tu nombre completo.';
@@ -399,7 +440,7 @@ function setupCheckout() {
             const res = await fetch('/api/subscribe', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ planId, name, email, phone, business })
+                body: JSON.stringify({ planId, systemId, name, email, phone, business })
             });
             const data = await res.json();
 

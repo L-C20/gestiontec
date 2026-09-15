@@ -15,7 +15,7 @@ const TEST_PLAN_ID = '__test_real__';
 const TEST_PLAN = { id: TEST_PLAN_ID, name: 'Prueba real', price: 15, currency: 'ARS', period: 'mes' };
 
 router.post('/subscribe', async (req, res) => {
-    const { planId, name, email, phone, business } = req.body || {};
+    const { planId, systemId, name, email, phone, business } = req.body || {};
 
     if (!planId || !name || !email) {
         return res.status(400).json({ error: 'Faltan datos obligatorios (nombre, email o plan).' });
@@ -24,12 +24,17 @@ router.post('/subscribe', async (req, res) => {
         return res.status(400).json({ error: 'El email no es válido.' });
     }
 
-    const plan = (planId === TEST_PLAN_ID && process.env.ALLOW_TEST_PLAN === 'true')
-        ? TEST_PLAN
-        : DATA.plans.find(p => p.id === planId);
+    const isTestPlan = planId === TEST_PLAN_ID && process.env.ALLOW_TEST_PLAN === 'true';
+    const plan = isTestPlan ? TEST_PLAN : DATA.plans.find(p => p.id === planId);
     if (!plan) {
         return res.status(400).json({ error: 'El plan seleccionado no existe.' });
     }
+
+    const system = DATA.solutions.find(s => s.id === systemId);
+    if (!isTestPlan && !system) {
+        return res.status(400).json({ error: 'El sistema seleccionado no existe.' });
+    }
+    const systemName = system ? system.name : 'Prueba real';
 
     const baseUrl = process.env.PUBLIC_BASE_URL;
     if (!baseUrl) {
@@ -40,8 +45,8 @@ router.post('/subscribe', async (req, res) => {
     try {
         const result = await preApproval.create({
             body: {
-                reason: `GESTIONTEC - Plan ${plan.name}`,
-                external_reference: `${plan.id}:${Date.now()}`,
+                reason: `${systemName} - Plan ${plan.name}`,
+                external_reference: `${systemId || 'test'}:${plan.id}:${Date.now()}`,
                 payer_email: email,
                 back_url: `${baseUrl}/gracias.html`,
                 notification_url: `${baseUrl}/api/webhooks/mercadopago`,
@@ -59,8 +64,9 @@ router.post('/subscribe', async (req, res) => {
         // (cuando Mercado Pago confirme el pago) no trae nombre/teléfono,
         // solo el email del pagador — así no se pierde ese dato.
         notifyOwner(
-            `GESTIONTEC — Nueva intención de suscripción (${plan.name})`,
+            `GESTIONTEC — Nueva intención de suscripción (${systemName} - ${plan.name})`,
             [
+                `Sistema: ${systemName}`,
                 `Plan: ${plan.name} ($${plan.price} ${plan.currency}/${plan.period})`,
                 `Nombre: ${name}`,
                 `Negocio: ${business || '-'}`,

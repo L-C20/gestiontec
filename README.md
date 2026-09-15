@@ -195,19 +195,17 @@ Editar `index.html`, buscar `const DATA = {` y modificar en `plans`:
 }
 ```
 
-### Agregar Nueva Solución
+### Agregar un Nuevo Sistema
 
-En el mismo objeto `DATA.solutions`:
+En `js/data.js`, dentro de `DATA.solutions` (los 3 sistemas comparten los mismos planes/precios de `DATA.plans`):
 
 ```javascript
 {
-    id: "nueva-solucion",
-    name: "NuevaSolución",
+    id: "nuevo-sistema",
+    name: "GestionTec NuevoRubro",
     rubric: "Rubro",
-    description: "...",
-    features: ["feature1", "feature2", ...],
-    status: "Disponible",
-    cta: "Conocer más"
+    description: "Descripción corta, una línea.",
+    status: "Disponible"
 }
 ```
 

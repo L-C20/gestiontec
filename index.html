@@ -7,8 +7,8 @@
     <meta name="author" content="GESTIONTEC">
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="GESTIONTEC — Sistemas de administración especializados para tu negocio. Soluciones profesionales para consultorios, comercios y profesionales independientes. Software de gestión empresarial.">
-    <meta name="keywords" content="sistema administración, software gestión, soluciones empresariales, software consultorios, sistema de turnos, facturación, punto de venta, gestión negocios">
+    <meta name="description" content="GESTIONTEC — Sistemas de administración para Médicos, Academias y Tiendas. Software de gestión especializado por rubro.">
+    <meta name="keywords" content="sistema administración, software gestión, sistema para médicos, sistema para academias, sistema para tiendas, facturación, punto de venta, gestión negocios">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0F3B52">
 
@@ -16,7 +16,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://gestiontec.com/">
     <meta property="og:title" content="GESTIONTEC — Sistemas de Administración para Tu Negocio">
-    <meta property="og:description" content="Soluciones tecnológicas especializadas para administrar tu negocio. Sistemas para consultorios, comercios y profesionales.">
+    <meta property="og:description" content="Sistemas de gestión especializados para Médicos, Academias y Tiendas.">
     <meta property="og:image" content="https://gestiontec.com/assets/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -25,7 +25,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="GESTIONTEC — Sistemas de Administración">
-    <meta name="twitter:description" content="Soluciones de software para administración de negocios. Consultorios, comercios y profesionales.">
+    <meta name="twitter:description" content="Sistemas de gestión para Médicos, Academias y Tiendas.">
     <meta name="twitter:image" content="https://gestiontec.com/assets/og-image.jpg">
 
     <!-- Canonical -->
@@ -80,20 +80,16 @@
         <section class="hero" id="inicio">
             <div class="hero__container">
                 <div class="hero__content">
-                    <span class="hero__eyebrow">Software de gestión empresarial</span>
-                    <h1 class="hero__title">Sistemas de administración <span>pensados para tu negocio</span></h1>
-                    <p class="hero__subtitle">GESTIONTEC desarrolla software profesional adaptado a cada rubro.</p>
-                    <p class="hero__description">
-                        Soluciones tecnológicas especializadas que te permiten organizar,
-                        controlar y optimizar la gestión de tu empresa desde un único lugar.
-                    </p>
+                    <span class="hero__eyebrow">Software de gestión</span>
+                    <h1 class="hero__title">Sistemas de administración <span>para tu negocio</span></h1>
+                    <p class="hero__subtitle">Elegí tu rubro y encontrá el sistema ideal.</p>
                     <div class="hero__ctas">
-                        <a href="#soluciones" class="hero__cta hero__cta--primary">Conocer soluciones</a>
-                        <a href="#planes" class="hero__cta hero__cta--secondary">Consultar planes</a>
+                        <a href="#soluciones" class="hero__cta hero__cta--primary">Ver sistemas</a>
+                        <a href="#planes" class="hero__cta hero__cta--secondary">Ver planes</a>
                     </div>
-                    <div class="hero__trust" id="heroStats">
-                        <!-- Renderizado dinámicamente desde config.js -->
-                    </div>
+                </div>
+                <div class="hero__systems" id="soluciones">
+                    <!-- Renderizado dinámicamente desde data.js -->
                 </div>
             </div>
         </section>
@@ -103,34 +99,15 @@
             <div class="what-is__container">
                 <div class="section__head">
                     <span class="eyebrow">Qué es GESTIONTEC</span>
-                    <h2 class="section__title">Una marca, sistemas especializados por rubro</h2>
+                    <h2 class="section__title">Un sistema por rubro</h2>
                 </div>
                 <div class="what-is__lead">
                     <p class="what-is__description">
-                        GESTIONTEC desarrolla sistemas de administración adaptados a distintos rubros de negocio.
-                        Nuestro objetivo es que puedas organizar, centralizar y controlar toda la información
-                        de tu empresa desde un único lugar, con software pensado específicamente para tu sector.
+                        Software para organizar, centralizar y controlar tu negocio desde un único lugar.
                     </p>
                     <div class="what-is__features" id="whatIsFeatures">
                         <!-- Renderizado dinámicamente -->
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 3: SOLUCIONES -->
-        <section class="solutions" id="soluciones">
-            <div class="solutions__container">
-                <div class="section__head section__head--center">
-                    <span class="eyebrow">Soluciones</span>
-                    <h2 class="section__title">Nuestras soluciones</h2>
-                    <p class="section__description">
-                        Sistemas especializados para diferentes rubros, diseñados considerando
-                        las necesidades específicas de cada negocio.
-                    </p>
-                </div>
-                <div class="solutions__grid" id="solutionsGrid">
-                    <!-- Renderizado dinámicamente desde data.js -->
                 </div>
             </div>
         </section>
@@ -168,12 +145,18 @@
                 <div class="section__head section__head--center">
                     <span class="eyebrow">Planes</span>
                     <h2 class="section__title">Planes y precios</h2>
-                    <p class="section__description">Elegí el plan que mejor se adapte a las necesidades de tu negocio.</p>
+                    <p class="section__description" id="pricingSystemHeading">Mismos planes para los 3 sistemas.</p>
+                </div>
+                <div class="pricing__systems" id="pricingSystemTabs">
+                    <!-- Renderizado dinámicamente desde data.js -->
                 </div>
                 <div class="pricing__grid" id="plansGrid">
                     <!-- Renderizado dinámicamente desde data.js -->
                 </div>
                 <p class="pricing__disclaimer">* Planes y precios sujetos a modificaciones</p>
+                <div class="pricing__addon" id="pricingAddon">
+                    <!-- Renderizado dinámicamente desde data.js -->
+                </div>
             </div>
         </section>
 
@@ -333,11 +316,12 @@
         <div class="checkout-modal__backdrop" data-checkout-close></div>
         <div class="checkout-modal__box" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
             <button type="button" class="checkout-modal__close" data-checkout-close aria-label="Cerrar">&times;</button>
-            <h3 id="checkoutTitle">Suscribirme al plan <span id="checkoutPlanName"></span></h3>
+            <h3 id="checkoutTitle"><span id="checkoutSystemName"></span> — Plan <span id="checkoutPlanName"></span></h3>
             <p class="checkout-modal__hint">Completá tus datos. Vas a ser redirigido a Mercado Pago para autorizar el cobro mensual de forma segura.</p>
 
             <form id="checkoutForm">
                 <input type="hidden" id="checkoutPlanId">
+                <input type="hidden" id="checkoutSystemId">
 
                 <div class="form__group">
                     <label for="checkoutName">Nombre completo <span class="form__required">*</span></label>
