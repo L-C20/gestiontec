@@ -183,25 +183,31 @@ Totalmente responsivo sin scroll horizontal:
 
 ## 📝 Modificación de Contenido
 
-### Cambiar Precios
+### Cambiar Precios o Funciones de un Plan
 
-En `js/data.js`, cada sistema (`DATA.solutions`) tiene su propio `pricing` —
-los 3 sistemas comparten la misma estructura de planes (`DATA.planTiers`:
-nombre, features, etc.) pero cada uno cobra distinto:
+En `js/data.js`, cada sistema (`DATA.solutions`) tiene su propio array
+`plans` con 3 planes (`inicial`/`profesional`/`empresa`) — cada sistema
+define sus propias funciones (`features`) y precio (`price`), porque lo
+que incluye cada plan es distinto según el rubro:
 
 ```javascript
-// DATA.solutions
+// DATA.solutions[].plans[]
 {
-    id: "medicos",
+    id: "inicial",
+    name: "Inicial",
+    price: 44900,  // ← Cambiar precio acá
     ...
-    pricing: { inicial: 44900, profesional: 89900, empresa: 199900 }  // ← Cambiar acá
+    features: [
+        { text: "Agenda de turnos", included: true },  // ← Cambiar/agregar funciones acá
+        ...
+    ]
 }
 ```
 
 ### Agregar un Nuevo Sistema
 
-En `js/data.js`, dentro de `DATA.solutions`, agregando también su `pricing`
-para los 3 planes existentes (`inicial`/`profesional`/`empresa`):
+En `js/data.js`, dentro de `DATA.solutions`, agregando su propio array
+`plans` completo (3 planes, con `features` propias de ese rubro):
 
 ```javascript
 {
@@ -210,7 +216,12 @@ para los 3 planes existentes (`inicial`/`profesional`/`empresa`):
     rubric: "Rubro",
     description: "Descripción corta, una línea.",
     status: "Disponible",
-    pricing: { inicial: 34900, profesional: 69900, empresa: 149900 }
+    plans: [
+        { id: "inicial", name: "Inicial", price: 34900, currency: "ARS", period: "mes",
+          description: "...", highlight: false, features: [...], cta: "Suscribirme" },
+        { id: "profesional", ... },
+        { id: "empresa", ... }
+    ]
 }
 ```
 

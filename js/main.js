@@ -124,13 +124,13 @@ function renderPlans() {
 
     const system = DATA.solutions.find(s => s.id === selectedSystemId) || DATA.solutions[0];
 
-    grid.innerHTML = `<div class="grid grid--3col pricing__grid">${DATA.planTiers.map(p => `
+    grid.innerHTML = `<div class="grid grid--3col pricing__grid">${system.plans.map(p => `
         <div class="plan-card ${p.highlight ? 'plan-card--highlight' : ''} reveal">
             ${p.highlight ? '<span class="plan-card__ribbon">Más elegido</span>' : ''}
             <h3 class="plan-card__name">${p.name}</h3>
             <p class="plan-card__desc">${p.description}</p>
             <div class="plan-card__price-row">
-                <span class="plan-card__price">$${system.pricing[p.id].toLocaleString('es-AR')}</span>
+                <span class="plan-card__price">$${p.price.toLocaleString('es-AR')}</span>
                 <span class="plan-card__period">${p.currency} / ${p.period}</span>
             </div>
             <ul class="plan-card__list">

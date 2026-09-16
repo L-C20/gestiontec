@@ -32,14 +32,7 @@ router.post('/subscribe', async (req, res) => {
     }
     const systemName = system ? system.name : 'Prueba real';
 
-    let plan;
-    if (isTestPlan) {
-        plan = TEST_PLAN;
-    } else {
-        const tier = DATA.planTiers.find(p => p.id === planId);
-        const price = tier && system.pricing[planId];
-        plan = tier && price ? { ...tier, price } : null;
-    }
+    const plan = isTestPlan ? TEST_PLAN : system.plans.find(p => p.id === planId);
     if (!plan) {
         return res.status(400).json({ error: 'El plan seleccionado no existe.' });
     }

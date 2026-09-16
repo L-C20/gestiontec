@@ -4,10 +4,10 @@
  */
 
 const DATA = {
-    // Sistemas (un sistema por rubro). Los 3 comparten la misma estructura de
-    // planes (ver planTiers), pero cada uno tiene sus propios precios en
-    // "pricing" — médicos cuesta más que tiendas/academias, siguiendo lo que
-    // cobra la competencia real para cada rubro.
+    // Sistemas (un sistema por rubro). Cada uno tiene sus propios 3 planes
+    // (Inicial/Profesional/Empresa), con funciones y precios propios — lo
+    // que se puede hacer en el sistema (y lo que cuesta) es distinto según
+    // el rubro, no una lista genérica repetida.
     solutions: [
         {
             id: "medicos",
@@ -15,7 +15,68 @@ const DATA = {
             rubric: "Consultorios y clínicas",
             description: "Turnos, historiales y facturación en un solo lugar.",
             status: "Disponible",
-            pricing: { inicial: 44900, profesional: 89900, empresa: 199900 }
+            plans: [
+                {
+                    id: "inicial",
+                    name: "Inicial",
+                    price: 44900,
+                    currency: "ARS",
+                    period: "mes",
+                    description: "Para emprendimientos y negocios pequeños",
+                    highlight: false,
+                    features: [
+                        { text: "Agenda de turnos", included: true },
+                        { text: "Historia clínica básica", included: true },
+                        { text: "1 usuario", included: true },
+                        { text: "Soporte por email", included: true },
+                        { text: "Recordatorios por WhatsApp", included: false },
+                        { text: "Facturación electrónica", included: false },
+                        { text: "Reportes clínicos", included: false },
+                        { text: "API access", included: false }
+                    ],
+                    cta: "Suscribirme"
+                },
+                {
+                    id: "profesional",
+                    name: "Profesional",
+                    price: 89900,
+                    currency: "ARS",
+                    period: "mes",
+                    description: "Para pequeñas empresas en crecimiento",
+                    highlight: true,
+                    features: [
+                        { text: "Agenda de turnos", included: true },
+                        { text: "Historia clínica completa", included: true },
+                        { text: "Recordatorios por WhatsApp", included: true },
+                        { text: "Facturación electrónica", included: true },
+                        { text: "Hasta 5 usuarios", included: true },
+                        { text: "Soporte prioritario", included: true },
+                        { text: "Hasta 20 usuarios", included: false },
+                        { text: "API access", included: false }
+                    ],
+                    cta: "Suscribirme"
+                },
+                {
+                    id: "empresa",
+                    name: "Empresa",
+                    price: 199900,
+                    currency: "ARS",
+                    period: "mes",
+                    description: "Para medianas empresas",
+                    highlight: false,
+                    features: [
+                        { text: "Historia clínica completa", included: true },
+                        { text: "Facturación electrónica", included: true },
+                        { text: "Múltiples consultorios", included: true },
+                        { text: "Reportes clínicos avanzados", included: true },
+                        { text: "Hasta 20 usuarios", included: true },
+                        { text: "API access", included: true },
+                        { text: "SLA 99.9%", included: true },
+                        { text: "Soporte 24/7", included: true }
+                    ],
+                    cta: "Suscribirme"
+                }
+            ]
         },
         {
             id: "academias",
@@ -23,7 +84,68 @@ const DATA = {
             rubric: "Academias y centros de enseñanza",
             description: "Alumnos, asistencia, pagos y cursos organizados.",
             status: "Disponible",
-            pricing: { inicial: 29900, profesional: 59900, empresa: 129900 }
+            plans: [
+                {
+                    id: "inicial",
+                    name: "Inicial",
+                    price: 29900,
+                    currency: "ARS",
+                    period: "mes",
+                    description: "Para emprendimientos y negocios pequeños",
+                    highlight: false,
+                    features: [
+                        { text: "Alumnos y matrículas", included: true },
+                        { text: "Control de asistencia", included: true },
+                        { text: "1 usuario", included: true },
+                        { text: "Soporte por email", included: true },
+                        { text: "Cobro de cuotas online", included: false },
+                        { text: "Comunicados por WhatsApp", included: false },
+                        { text: "Reportes de rendimiento", included: false },
+                        { text: "API access", included: false }
+                    ],
+                    cta: "Suscribirme"
+                },
+                {
+                    id: "profesional",
+                    name: "Profesional",
+                    price: 59900,
+                    currency: "ARS",
+                    period: "mes",
+                    description: "Para pequeñas empresas en crecimiento",
+                    highlight: true,
+                    features: [
+                        { text: "Alumnos y matrículas", included: true },
+                        { text: "Control de asistencia", included: true },
+                        { text: "Cobro de cuotas online", included: true },
+                        { text: "Comunicados por WhatsApp", included: true },
+                        { text: "Hasta 5 usuarios", included: true },
+                        { text: "Soporte prioritario", included: true },
+                        { text: "Hasta 20 usuarios", included: false },
+                        { text: "API access", included: false }
+                    ],
+                    cta: "Suscribirme"
+                },
+                {
+                    id: "empresa",
+                    name: "Empresa",
+                    price: 129900,
+                    currency: "ARS",
+                    period: "mes",
+                    description: "Para medianas empresas",
+                    highlight: false,
+                    features: [
+                        { text: "Cobro de cuotas online", included: true },
+                        { text: "Comunicados por WhatsApp", included: true },
+                        { text: "Múltiples sedes", included: true },
+                        { text: "Reportes de rendimiento avanzados", included: true },
+                        { text: "Hasta 20 usuarios", included: true },
+                        { text: "API access", included: true },
+                        { text: "SLA 99.9%", included: true },
+                        { text: "Soporte 24/7", included: true }
+                    ],
+                    cta: "Suscribirme"
+                }
+            ]
         },
         {
             id: "tiendas",
@@ -31,69 +153,68 @@ const DATA = {
             rubric: "Tiendas y comercios",
             description: "Ventas, stock y clientes desde cualquier lugar.",
             status: "Disponible",
-            pricing: { inicial: 34900, profesional: 69900, empresa: 149900 }
-        }
-    ],
-
-    // Estructura de planes (nombre, features, etc.) compartida por los 3
-    // sistemas. El precio real de cada uno sale de solutions[].pricing.
-    planTiers: [
-        {
-            id: "inicial",
-            name: "Inicial",
-            currency: "ARS",
-            period: "mes",
-            description: "Para emprendimientos y negocios pequeños",
-            highlight: false,
-            features: [
-                { text: "1 usuario", included: true },
-                { text: "Módulo base completo", included: true },
-                { text: "Soporte por email", included: true },
-                { text: "Actualizaciones incluidas", included: true },
-                { text: "Múltiples usuarios", included: false },
-                { text: "Reportes avanzados", included: false },
-                { text: "Integraciones", included: false },
-                { text: "API access", included: false }
-            ],
-            cta: "Suscribirme"
-        },
-        {
-            id: "profesional",
-            name: "Profesional",
-            currency: "ARS",
-            period: "mes",
-            description: "Para pequeñas empresas en crecimiento",
-            highlight: true,
-            features: [
-                { text: "Hasta 5 usuarios", included: true },
-                { text: "Todos los módulos", included: true },
-                { text: "Reportes y análisis", included: true },
-                { text: "Integraciones básicas", included: true },
-                { text: "Soporte prioritario", included: true },
-                { text: "Actualizaciones incluidas", included: true },
-                { text: "Hasta 20 usuarios", included: false },
-                { text: "API access", included: false }
-            ],
-            cta: "Suscribirme"
-        },
-        {
-            id: "empresa",
-            name: "Empresa",
-            currency: "ARS",
-            period: "mes",
-            description: "Para medianas empresas",
-            highlight: false,
-            features: [
-                { text: "Hasta 20 usuarios", included: true },
-                { text: "Todos los módulos", included: true },
-                { text: "Reportes avanzados", included: true },
-                { text: "Integraciones personalizadas", included: true },
-                { text: "API access", included: true },
-                { text: "SLA 99.9%", included: true },
-                { text: "Soporte 24/7", included: true },
-                { text: "Consultoría incluida", included: true }
-            ],
-            cta: "Suscribirme"
+            plans: [
+                {
+                    id: "inicial",
+                    name: "Inicial",
+                    price: 34900,
+                    currency: "ARS",
+                    period: "mes",
+                    description: "Para emprendimientos y negocios pequeños",
+                    highlight: false,
+                    features: [
+                        { text: "Punto de venta", included: true },
+                        { text: "Control de stock básico", included: true },
+                        { text: "1 usuario", included: true },
+                        { text: "Soporte por email", included: true },
+                        { text: "Facturación electrónica", included: false },
+                        { text: "Múltiples sucursales", included: false },
+                        { text: "Reportes de ventas", included: false },
+                        { text: "API access", included: false }
+                    ],
+                    cta: "Suscribirme"
+                },
+                {
+                    id: "profesional",
+                    name: "Profesional",
+                    price: 69900,
+                    currency: "ARS",
+                    period: "mes",
+                    description: "Para pequeñas empresas en crecimiento",
+                    highlight: true,
+                    features: [
+                        { text: "Punto de venta", included: true },
+                        { text: "Control de stock avanzado", included: true },
+                        { text: "Facturación electrónica", included: true },
+                        { text: "Reportes de ventas", included: true },
+                        { text: "Hasta 5 usuarios", included: true },
+                        { text: "Soporte prioritario", included: true },
+                        { text: "Hasta 20 usuarios", included: false },
+                        { text: "API access", included: false }
+                    ],
+                    cta: "Suscribirme"
+                },
+                {
+                    id: "empresa",
+                    name: "Empresa",
+                    price: 149900,
+                    currency: "ARS",
+                    period: "mes",
+                    description: "Para medianas empresas",
+                    highlight: false,
+                    features: [
+                        { text: "Facturación electrónica", included: true },
+                        { text: "Control de stock avanzado", included: true },
+                        { text: "Múltiples sucursales", included: true },
+                        { text: "Reportes de ventas avanzados", included: true },
+                        { text: "Hasta 20 usuarios", included: true },
+                        { text: "API access", included: true },
+                        { text: "SLA 99.9%", included: true },
+                        { text: "Soporte 24/7", included: true }
+                    ],
+                    cta: "Suscribirme"
+                }
+            ]
         }
     ],
 
