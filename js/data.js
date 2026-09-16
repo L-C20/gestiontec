@@ -22,7 +22,7 @@ const DATA = {
                     price: 44900,
                     currency: "ARS",
                     period: "mes",
-                    description: "Para emprendimientos y negocios pequeños",
+                    description: "Para profesionales y consultorios chicos",
                     highlight: false,
                     features: [
                         { text: "Agenda de turnos", included: true },
@@ -42,7 +42,7 @@ const DATA = {
                     price: 89900,
                     currency: "ARS",
                     period: "mes",
-                    description: "Para pequeñas empresas en crecimiento",
+                    description: "Para clínicas en crecimiento",
                     highlight: true,
                     features: [
                         { text: "Agenda de turnos", included: true },
@@ -62,7 +62,7 @@ const DATA = {
                     price: 199900,
                     currency: "ARS",
                     period: "mes",
-                    description: "Para medianas empresas",
+                    description: "Para centros médicos con varias sedes",
                     highlight: false,
                     features: [
                         { text: "Historia clínica completa", included: true },
@@ -91,7 +91,7 @@ const DATA = {
                     price: 29900,
                     currency: "ARS",
                     period: "mes",
-                    description: "Para emprendimientos y negocios pequeños",
+                    description: "Para academias y talleres chicos",
                     highlight: false,
                     features: [
                         { text: "Alumnos y matrículas", included: true },
@@ -111,7 +111,7 @@ const DATA = {
                     price: 59900,
                     currency: "ARS",
                     period: "mes",
-                    description: "Para pequeñas empresas en crecimiento",
+                    description: "Para academias en crecimiento",
                     highlight: true,
                     features: [
                         { text: "Alumnos y matrículas", included: true },
@@ -131,7 +131,7 @@ const DATA = {
                     price: 129900,
                     currency: "ARS",
                     period: "mes",
-                    description: "Para medianas empresas",
+                    description: "Para instituciones con varias sedes",
                     highlight: false,
                     features: [
                         { text: "Cobro de cuotas online", included: true },
@@ -160,7 +160,7 @@ const DATA = {
                     price: 34900,
                     currency: "ARS",
                     period: "mes",
-                    description: "Para emprendimientos y negocios pequeños",
+                    description: "Para emprendimientos y tiendas chicas",
                     highlight: false,
                     features: [
                         { text: "Punto de venta", included: true },
@@ -180,7 +180,7 @@ const DATA = {
                     price: 69900,
                     currency: "ARS",
                     period: "mes",
-                    description: "Para pequeñas empresas en crecimiento",
+                    description: "Para comercios en crecimiento",
                     highlight: true,
                     features: [
                         { text: "Punto de venta", included: true },
@@ -200,7 +200,7 @@ const DATA = {
                     price: 149900,
                     currency: "ARS",
                     period: "mes",
-                    description: "Para medianas empresas",
+                    description: "Para cadenas con varias sucursales",
                     highlight: false,
                     features: [
                         { text: "Facturación electrónica", included: true },
